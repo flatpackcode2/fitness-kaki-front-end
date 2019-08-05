@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
+import axios from 'axios';
+
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -21,33 +23,37 @@ const formValid = ({ formErrors, ...rest }) => {
     return valid;
 };
 
-class Registration extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             username: null,
+            email: null,
             password: null,
             formErrors: {
                 username: "",
-                password: ""
+                email: "",
+                password: "",
+                loginSuccess: false,
             }
         };
     }
 
     handleSubmit = e => {
-        e.preventDefault();
-
-        if (formValid(this.state)) {
-            console.log(`
-        --SUBMITTING--
-        Username: ${this.state.username}
-        Password: ${this.state.password}
-      `);
-        } else {
-            console.error("Create account");
+        e.preventDefault()
+        const RegistrationApp = {
+            username: this.state.username,
+            password: this.state.password
         }
+
+
+        this.props.LogMeUp(RegistrationApp);
     };
+
+
+
+
 
     handleChange = e => {
         e.preventDefault();
@@ -58,6 +64,11 @@ class Registration extends Component {
             case "username":
                 formErrors.username =
                     value.length < 8 ? "please use unique username" : "";
+                break;
+            case "email":
+                formErrors.email = emailRegex.test(value)
+                    ? ""
+                    : "invalid email address";
                 break;
             case "password":
                 formErrors.password =
@@ -92,6 +103,20 @@ class Registration extends Component {
                                 <span className="errorMessage">{formErrors.username}</span>
                             )}
                         </div>
+                        <div className="email">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                className={formErrors.email.length > 0 ? "error" : null}
+                                placeholder="Email"
+                                type="email"
+                                name="email"
+                                noValidate
+                                onChange={this.handleChange}
+                            />
+                            {formErrors.email.length > 0 && (
+                                <span className="errorMessage">{formErrors.email}</span>
+                            )}
+                        </div>
                         <div className="password">
                             <label htmlFor="password">Password</label>
                             <input
@@ -107,8 +132,9 @@ class Registration extends Component {
                             )}
                         </div>
                         <div className="createAccount">
-                            <button type="submit">Login</button>
-                            <small>Forgot password?</small>
+                            <button type="submit" href="/profile">Login</button>
+                            <a href="/profile">Login</a>
+                            <a href="/registration">Do Not Have an Account?</a>
                         </div>
                     </form>
                 </div>
@@ -117,4 +143,4 @@ class Registration extends Component {
     }
 }
 
-export default Registration;
+export default Login;

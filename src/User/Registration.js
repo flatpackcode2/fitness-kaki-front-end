@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Registration.css";
+import axios from 'axios';
 
 
 const emailRegex = RegExp(
@@ -27,37 +28,39 @@ class Registration extends Component {
         super(props);
 
         this.state = {
-            firstName: null,
-            lastName: null,
+            firstname: null,
+            lastname: null,
             username: null,
             email: null,
             password: null,
             formErrors: {
-                firstName: "",
-                lastName: "",
+                firstname: "",
+                lastname: "",
                 username: "",
                 email: "",
-                password: ""
+                password: "",
+                loginSuccess: false,
             }
         };
     }
 
     handleSubmit = e => {
-        e.preventDefault();
-
-        if (formValid(this.state)) {
-            console.log(`
-        --SUBMITTING--
-        First Name: ${this.state.firstName}
-        Last Name: ${this.state.lastName}
-        Username: ${this.state.username}
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-      `);
-        } else {
-            console.error("Create account");
+        e.preventDefault()
+        const RegistrationApp = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            firstname: this.state.firstname,
+            lastname: this.state.lastname
         }
+
+
+        this.props.LiftMeUp(RegistrationApp);
     };
+
+
+
+
 
     handleChange = e => {
         e.preventDefault();
@@ -65,12 +68,12 @@ class Registration extends Component {
         let formErrors = { ...this.state.formErrors };
 
         switch (name) {
-            case "firstName":
-                formErrors.firstName =
+            case "firstname":
+                formErrors.firstname =
                     value.length < 3 ? "minimum 3 characaters required" : "";
                 break;
-            case "lastName":
-                formErrors.lastName =
+            case "lastname":
+                formErrors.lastname =
                     value.length < 3 ? "minimum 3 characaters required" : "";
                 break;
             case "username":
@@ -101,32 +104,32 @@ class Registration extends Component {
                 <div className="form-wrapper">
                     <h1>Create Account</h1>
                     <form onSubmit={this.handleSubmit} noValidate>
-                        <div className="firstName">
-                            <label htmlFor="firstName">First Name</label>
+                        <div className="firstname">
+                            <label htmlFor="firstname">First Name</label>
                             <input
-                                className={formErrors.firstName.length > 0 ? "error" : null}
+                                className={formErrors.firstname.length > 0 ? "error" : null}
                                 placeholder="First Name"
                                 type="text"
-                                name="firstName"
+                                name="firstname"
                                 noValidate
                                 onChange={this.handleChange}
                             />
-                            {formErrors.firstName.length > 0 && (
-                                <span className="errorMessage">{formErrors.firstName}</span>
+                            {formErrors.firstname.length > 0 && (
+                                <span className="errorMessage">{formErrors.firstname}</span>
                             )}
                         </div>
-                        <div className="lastName">
-                            <label htmlFor="lastName">Last Name</label>
+                        <div className="lastname">
+                            <label htmlFor="lastname">Last Name</label>
                             <input
-                                className={formErrors.lastName.length > 0 ? "error" : null}
+                                className={formErrors.lastname.length > 0 ? "error" : null}
                                 placeholder="Last Name"
                                 type="text"
-                                name="lastName"
+                                name="lastname"
                                 noValidate
                                 onChange={this.handleChange}
                             />
-                            {formErrors.lastName.length > 0 && (
-                                <span className="errorMessage">{formErrors.lastName}</span>
+                            {formErrors.lastname.length > 0 && (
+                                <span className="errorMessage">{formErrors.lastname}</span>
                             )}
                         </div>
                         <div className="username">
@@ -173,6 +176,7 @@ class Registration extends Component {
                         </div>
                         <div className="createAccount">
                             <button type="submit" href="/profile">Register</button>
+                            <a href="/profile">Register</a>
                             <a href="/login">Already Have an Account?</a>
                         </div>
                     </form>

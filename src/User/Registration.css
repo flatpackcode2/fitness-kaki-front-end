@@ -63,16 +63,16 @@ input.error {
   display: relative;
 }
 
-.firstName {
+.firstname {
   margin-right: 1%;
 }
 
-.lastName {
+.lastname {
   margin-left: 1%;
 }
 
-.firstName,
-.lastName,
+.firstname,
+.lastname,
 .username,
 .email,
 .password {
@@ -81,8 +81,8 @@ input.error {
   margin-bottom: 15px;
 }
 
-.firstName,
-.lastName {
+.firstname,
+.lastname {
   width: 49%;
 }
 
