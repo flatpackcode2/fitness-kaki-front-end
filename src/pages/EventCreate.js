@@ -44,7 +44,8 @@ class EventCreate extends React.Component{
             name:this.state.eventName,
             description:this.state.description,
             location:this.state.location,
-            host:this.state.host,
+            // host:this.state.host,
+            host:2,
             max_number:parseInt(this.state.maxNumber),
             time:this.state.time
         }
@@ -56,7 +57,7 @@ class EventCreate extends React.Component{
         console.log('registerEvent called');
         console.log('Below is the value for eventDetails');
         console.log(eventDetails);
-        axios.post('http://localhost:5000/api/v1/events/',
+        axios.post('https://final-project-healthy.herokuapp.com/api/v1/events/',
             JSON.stringify(eventDetails),
             { headers: {'content-type': 'application/json'
             // 'Authorization': `Bearer ${JWT}`
