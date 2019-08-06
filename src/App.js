@@ -8,6 +8,8 @@ import NavBar from "./components/navbar";
 import Registration from "./User/Registration";
 import Login from "./User/Login";
 import Profile from "./User/Profile";
+import EventFeed from './pages/EventFeed'
+import EventCreate from './pages/EventCreate'
 import axios from 'axios'
 
 
@@ -116,6 +118,8 @@ class App extends React.Component {
             return (
               <Profile {...props} />)
           }} />
+          <Route path="/events/create" component = {EventCreate}/>
+          <Route path="/events/" component = {EventFeed}/>
         </Switch>
       </>
     );
