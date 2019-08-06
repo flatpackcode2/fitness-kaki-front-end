@@ -1,4 +1,28 @@
 #wider-box {
     width: 50%;
-    height: 50%;
+    height: 35%;
+}
+
+#information{
+    width: 210px;
+    height: 210px;
+    padding: 0.5em;
+}
+
+#chat{
+    width: 210px;
+    height: 210px;
+    padding: 0.5em;
+}
+
+#company{
+    width: 210px;
+    height: 210px;
+    padding: 0.5em;
+}
+
+#developer{
+    width: 210px;
+    height: 210px;
+    padding: 0.5em;
 }
