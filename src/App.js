@@ -23,7 +23,16 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
+      loggedInStatus: "loggedOut"
     }
+  }
+
+  componentDidMount = () => {
+    let loginStatus = localStorage.getItem('loggedInStatus')
+
+    this.setState({
+      loggedInStatus: loginStatus
+    })
   }
 
   LiftMeUp = (message) => {
@@ -78,17 +87,39 @@ class App extends React.Component {
       let JWT = result.data.auth_token;
 
       localStorage.setItem('userToken', JWT)
+      localStorage.setItem('loggedInStatus', 'loggedIn')
+
+      this.setState({
+        loggedInStatus: 'loggedIn'
+      })
 
       this.props.history.push('/profile')
     })
   }
 
-  render() {
+  LogOutAccount = () => {
+    localStorage.removeItem('userToken')
+    localStorage.setItem('loggedInStatus', 'loggedOut')
 
+    this.setState({
+      loggedInStatus: 'loggedOut'
+    })
+
+    this.props.history.push('/')
+  }
+
+  LogStatus = () => {
+    localStorage.getItem('loggedInStatus',
+      (value) => {
+        this.setState({ loggedInStatus: value });
+      });
+  }
+
+
+  render() {
     return (
       <>
-        <NavBar />
-        <hr />
+        <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount} />
         <Switch>
           <Route exact path='/' component={props => {
             return (
