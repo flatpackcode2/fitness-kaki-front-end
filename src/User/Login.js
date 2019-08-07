@@ -29,11 +29,9 @@ class Login extends Component {
 
         this.state = {
             username: null,
-            email: null,
             password: null,
             formErrors: {
                 username: "",
-                email: "",
                 password: "",
                 loginSuccess: false,
             }
@@ -51,10 +49,6 @@ class Login extends Component {
         this.props.LogMeUp(RegistrationApp);
     };
 
-
-
-
-
     handleChange = e => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -64,11 +58,6 @@ class Login extends Component {
             case "username":
                 formErrors.username =
                     value.length < 8 ? "please use unique username" : "";
-                break;
-            case "email":
-                formErrors.email = emailRegex.test(value)
-                    ? ""
-                    : "invalid email address";
                 break;
             case "password":
                 formErrors.password =
@@ -80,7 +69,6 @@ class Login extends Component {
 
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
     };
-
     render() {
         const { formErrors } = this.state;
 
@@ -103,20 +91,6 @@ class Login extends Component {
                                 <span className="errorMessage">{formErrors.username}</span>
                             )}
                         </div>
-                        <div className="email">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                className={formErrors.email.length > 0 ? "error" : null}
-                                placeholder="Email"
-                                type="email"
-                                name="email"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.email.length > 0 && (
-                                <span className="errorMessage">{formErrors.email}</span>
-                            )}
-                        </div>
                         <div className="password">
                             <label htmlFor="password">Password</label>
                             <input
@@ -133,7 +107,6 @@ class Login extends Component {
                         </div>
                         <div className="createAccount">
                             <button type="submit" href="/profile">Login</button>
-                            <a href="/profile">Login</a>
                             <a href="/registration">Do Not Have an Account?</a>
                         </div>
                     </form>

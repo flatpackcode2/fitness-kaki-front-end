@@ -1,60 +1,58 @@
 import React, { Component } from 'react';
 import './Profile.css'
+import Acc from "../images/account.png"
 
-class Profile extends React.Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
-        this.state = { file: '', imagePreviewUrl: '' };
+
+        this.state = {
+            username: null,
+            email: null,
+            password: null,
+            formErrors: {
+                username: "",
+                email: "",
+                password: "",
+                loginSuccess: false,
+            }
+        };
     }
 
-    _handleSubmit(e) {
-        e.preventDefault();
-        // TODO: do something with -> this.state.file
-        console.log('handle uploading-', this.state.file);
+    componentDidMount = async () => {
+        // Retrieve JWT from localStorage
+        let JWT = await localStorage.getItem('userToken');
+        // Axios call to endpoint
+
+        // headers need Authorization: `Bearer ${JWT}`
+
+        // .then() you can set state with the user information
+
     }
 
-    _handleImageChange(e) {
-        e.preventDefault();
-
-        let reader = new FileReader();
-        let file = e.target.files[0];
-
-        reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imagePreviewUrl: reader.result
-            });
+    handleSubmit = e => {
+        e.preventDefault()
+        const RegistrationApp = {
+            username: this.state.username,
+            password: this.state.password
         }
 
-        reader.readAsDataURL(file)
-    }
+
+        this.props.LogMeUp(RegistrationApp);
+    };
 
     render() {
-        let { imagePreviewUrl } = this.state;
-        let $imagePreview = null;
-        if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
-        } else {
-            $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
-        }
+        const { formErrors } = this.state;
 
         return (
-            <div className="previewComponent">
-                <form onSubmit={(e) => this._handleSubmit(e)}>
-                    <input className="fileInput"
-                        type="file"
-                        onChange={(e) => this._handleImageChange(e)} />
-                    <button className="submitButton"
-                        type="submit"
-                        onClick={(e) => this._handleSubmit(e)}>Upload Image</button>
-                </form>
-                <div className="imgPreview">
-                    {$imagePreview}
+            <div className="wrapper">
+                <div className="form-wrapper">
+                    <h1>Profile</h1>
+                    <img src={Acc} id="account" />
                 </div>
             </div>
-        )
+        );
     }
 }
-
 
 export default Profile;

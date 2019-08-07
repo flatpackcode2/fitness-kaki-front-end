@@ -50,7 +50,7 @@ class App extends React.Component {
         last_name: `${this.state.lastname}`
       }
     }).then(result => {
-      console.log(result)
+      this.props.history.push('/profile')
     })
       .catch(error => {
         console.log(`Sign-up failed: ${error}`)
@@ -75,10 +75,11 @@ class App extends React.Component {
         password: `${this.state.password}`
       }
     }).then(result => {
-      console.log(result)
-    })
-    .catch(error =>{
-      console.log(error)
+      let JWT = result.data.auth_token;
+
+      localStorage.setItem('userToken', JWT)
+
+      this.props.history.push('/profile')
     })
   }
 
@@ -118,8 +119,8 @@ class App extends React.Component {
             return (
               <Profile {...props} />)
           }} />
-          <Route path="/events/create" component = {EventCreate}/>
-          <Route path="/events/" component = {EventFeed}/>
+          <Route path="/events/create" component={EventCreate} />
+          <Route path="/events/" component={EventFeed} />
         </Switch>
       </>
     );
