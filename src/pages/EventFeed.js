@@ -6,16 +6,19 @@ import {Button,
     CardSubtitle,
     Container,
     CardText,
+    CardTitle,
     Progress
     } from 'reactstrap';
 import axios from 'axios';
+import Loader from '../images/loader.gif';
 
 class EventFeed extends React.Component{
     constructor(props){
         super(props);
         this.state={
             message:true,
-            eventsList:[]
+            eventsList:[],
+            isLoading:true
         }
     }
 
@@ -27,7 +30,7 @@ class EventFeed extends React.Component{
         console.log('****');
         console.log(response);
         let tempEventList = response.data;
-        this.setState({eventsList:tempEventList});
+        this.setState({eventsList:tempEventList, isLoading:false});
       })
       .catch(error=>{
         console.log('ERROR: ', error);
@@ -35,35 +38,44 @@ class EventFeed extends React.Component{
     }
 
     render(){
-        const {eventsList} = this.state;
+        const {eventsList, isLoading} = this.state;
         console.log("eventsList is", eventsList)
         return(
           <div>
             <div>
               <h1>This Heading is in EventFeed.js</h1>
-                {eventsList.map((eventInList) => {
-                  return(
-              <Container className="my-2">
-                <Button color="danger">
-                  <Row md="10" className="d-flex align-items-center rounded">
-                    <Col md="3" className =" d-flex justify-content-center align-item-center rounded">
-                      <img width="100%" className="border border-white p1 rounded" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Capitals-Maple_Leafs_%2834075134291%29.jpg" alt="event image"/>
-                    </Col>
-                    <Col md="9" className="rounded">
-                      <CardBody className="p-1 text-left">
-                        <div className="event-title"><h3>{eventInList.name}</h3></div>
-                        <CardSubtitle>{eventInList.description}</CardSubtitle>
-                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                        <CardText>This is a card text but I will need to put the hosts picture here</CardText>
-                        <div className="text-center">Capacity: {eventInList.max_guests} (this is just text for now)</div>
-                        <Progress color ="success" value="25" />
-                      </CardBody>
-                    </Col>
+                {isLoading? 
+                <Container>
+                  <Row className="d-flex align-items-center justify-content-center">
+                    <img src={Loader} alt="Loading event feed"/>
                   </Row>
-                </Button>
-              </Container>)
+                </Container>
+                :
+                  eventsList.map((eventInList) => {
+                  return(
+                    <Container key={eventInList.id} className="my-2">
+                      <Button color="danger">
+                        <Row md="10" className="d-flex align-items-center rounded">
+                          <Col md="3" className =" d-flex justify-content-center align-item-center rounded">
+                            <img width="100%" className="border border-white p1 rounded" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Capitals-Maple_Leafs_%2834075134291%29.jpg" alt="event image"/>
+                          </Col>
+                          <Col md="9" className="rounded">
+                            <CardBody className="p-1 text-left">
+                              <CardTitle><h3>{eventInList.name}</h3></CardTitle>
+                              <CardSubtitle>{eventInList.time}</CardSubtitle>
+                              <CardText>{eventInList.location}</CardText>
+                              <CardText>{eventInList.description}</CardText>
+                              <div className="text-center">Capacity: {eventInList.max_number} (this is just text for now)</div>
+                              <Progress color ="success" value="25" />
+                            </CardBody>
+                          </Col>
+                        </Row>
+                      </Button>
+                    </Container>)
                 })
+                
                 }
+
             </div>
           </div>
         )

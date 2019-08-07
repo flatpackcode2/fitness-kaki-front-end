@@ -23,8 +23,6 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
-      login_username: '',
-      login_password: ''
     }
   }
 
@@ -61,8 +59,8 @@ class App extends React.Component {
   }
   LogMeUp = (message) => {
     this.setState({
-      login_username: message.username,
-      login_password: message.password
+      username: message.username,
+      password: message.password
     },
       () => this.LoginAccount()
     )
@@ -73,8 +71,8 @@ class App extends React.Component {
       method: 'POST',
       url: 'https://final-project-healthy.herokuapp.com/api/v1/sessions/login',
       data: {
-        username: `${this.state.login_username}`,
-        password: `${this.state.login_password}`
+        username: `${this.state.username}`,
+        password: `${this.state.password}`
       }
     }).then(result => {
       console.log(result)
