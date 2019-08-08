@@ -9,6 +9,8 @@ import NavBar from "./components/navbar";
 import Registration from "./User/Registration";
 import Login from "./User/Login";
 import Profile from "./User/Profile";
+import EventFeed from "./pages/EventFeed";
+import EventCreate from "./pages/EventCreate";
 import axios from 'axios'
 
 
@@ -22,10 +24,17 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
-      login_username: '',
-      login_password: ''
+      loggedInStatus:'loggedOut'
     }
   }
+
+  // componentDidMount=()=>{
+  //   let loginStatus=localStorage.getItem('loggedInStatus')
+
+  //   this.setState({
+  //     loggedinStatus:loginStatus
+  //   })
+  // }
 
   LiftMeUp = (message) => {
     this.setState({
@@ -51,17 +60,19 @@ class App extends React.Component {
         last_name: `${this.state.lastname}`
       }
     }).then(result => {
+      this.props.history.push('/profile')
       console.log(result)
     })
       .catch(error => {
         console.log(`Sign-up failed: ${error}`)
-        console.log(error.response.data.message)
+        console.log(error)
+        // console.log(error.response.data.message)
       })
   }
   LogMeUp = (message) => {
     this.setState({
-      login_username: message.username,
-      login_password: message.password
+      username: message.username,
+      password: message.password
     },
       () => this.LoginAccount()
     )
@@ -72,27 +83,47 @@ class App extends React.Component {
       method: 'POST',
       url: 'https://final-project-healthy.herokuapp.com/api/v1/sessions/login',
       data: {
-        username: `${this.state.login_username}`,
-        password: `${this.state.login_password}`
+        username: `${this.state.username}`,
+        password: `${this.state.password}`
       }
     }).then(result => {
+      let JWT =result.data.auth_token;
+      localStorage.setItem('userToken', JWT)
       console.log(result)
+      this.setState({loggedInStatus:'loggedIn'})
+      // console.log(this.props)
+      this.props.history.push('/profile')
+    }).catch(error =>{
+      console.log(error)
+    }
 
-    })
+    )
+    console.log(this.props)
+  }
+
+  LogOutAccount = () =>{
+    localStorage.removeItem('userToken')
+    localStorage.setItem('loggedInStatus', 'loggedOut')
+
+    this.setState(
+      {loggedInStatus:'loggedOut'}
+    )
+
+    this.props.history.push('/')
   }
 
   render() {
 
     return (
       <>
-        <NavBar />
+        <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount}/>
         <hr />
         <Switch>
           <Route exact path='/' component={props => {
             return (
               <Home {...props} />)
           }} />
-          <Route exactpath='/' component={props => {
+          <Route path='/upload' component={props => {
             return (
               <Upload {...props} />)
           }} />
@@ -120,6 +151,14 @@ class App extends React.Component {
           <Route path='/profile' component={props => {
             return (
               <Profile {...props} />)
+          }} />
+          <Route exact path='/events' component={props => {
+            return (
+              <EventFeed {...props} />)
+          }} />
+          <Route path='/events/create' component={props => {
+            return (
+              <EventCreate {...props} />)
           }} />
         </Switch>
       </>

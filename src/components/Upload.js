@@ -67,8 +67,8 @@ class Upload extends Component {
         return (
             < div className="wrapper" >
                 <form  >
-                    <div class="form-group" >
-                        <input onChange={e => this.predictImage(e)} name="image" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Select URL" />
+                    <div className="form-group" >
+                        <input onChange={e => this.predictImage(e)} name="image" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Select URL" />
                     </div>
                 </form>
                 {
