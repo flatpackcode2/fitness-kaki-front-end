@@ -31,10 +31,7 @@ class NavBar extends React.Component {
                     <Nav className="ml-auto" navbar>
                         <ul className="navbar-nav mr-auto">
                             <li><Link to={'/'} className="nav-link"> Home </Link></li>
-                            {this.props.isLoggedIn === 'loggedIn' ? (
-                                <li><Link to={'/events'} className="nav-link"> Events </Link></li>
-                            ) : (null)
-                            }
+                            <li><Link to={'/upload'} className="nav-link">Upload</Link></li>
                             <li><Link to={'/about'} className="nav-link">About</Link></li>
                             <li><Link to={'/contact'} className="nav-link">Contact</Link></li>
                         </ul>
@@ -43,14 +40,15 @@ class NavBar extends React.Component {
                                 User
                 </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem><li><Link to={'/profile'} className="nav-link">Profile</Link></li></DropdownItem>
-                                <DropdownItem><li><Link to={'/registration'} className="nav-link">Registration</Link></li></DropdownItem>
-                                {this.props.isLoggedIn === 'loggedIn' ? (
-                                    <DropdownItem><li><a onClick={this.props.logout} className="nav-link">Logout</a></li></DropdownItem>
-                                ) : (
-                                        <DropdownItem><li><Link to={'/login'} className="nav-link">Login</Link></li></DropdownItem>
-                                    )
-                                }
+                                <DropdownItem>
+                                    <li><Link to={'/profile'} className="nav-link">Profile</Link></li>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <li><Link to={'/registration'} className="nav-link">Registration</Link></li>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <li><Link to={'/login'} className="nav-link">Login</Link></li>
+                                </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
