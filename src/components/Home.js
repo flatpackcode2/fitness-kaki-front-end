@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel, CarouselIndicators, CarouselControl, CarouselCaption, CarouselItem, ButtonToolbar, Button, ButtonGroup } from 'reactstrap';
 import SportImage from '../images/Sports.jpg'
+import EventFeed from "../pages/EventFeed"
 
 const items = [
     {
@@ -74,13 +75,7 @@ class Home extends Component {
         return (
             <>
                 <style>
-                    {
-                        `.custom-tag {
-                max-width: 100%;
-                height: 500px;
-                background: black;
-              }`
-                    }
+                    {`.custom-tag {max-width: 100%; height: 500px;background: black;}`}
                 </style>
                 <div>
                     <Carousel
@@ -93,23 +88,7 @@ class Home extends Component {
                         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
                         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
                     </Carousel>
-
-                    <div>
-                        <ButtonToolbar>
-                            <ButtonToolbar>
-                                <Button variant="primary" size="lg" align-items="center" >
-                                    Create Event
-                                </Button>
-                                <Button variant="secondary" size="lg" align-items="center" display="flex">
-                                    Join Event
-                                </Button>
-                            </ButtonToolbar>
-                        </ButtonToolbar>
-                    </div>
-
-
-
-
+                    {/* <EventFeed/>EventFeed is taking a long time to load. How to improve loading times? */}
 
                 </div>
             </>

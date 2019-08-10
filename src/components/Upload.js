@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { file } from "@babel/types";
 
 class Upload extends Component {
     constructor(props) {
