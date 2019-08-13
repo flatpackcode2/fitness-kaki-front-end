@@ -44,9 +44,7 @@ class NavBar extends React.Component {
                             <li><Link to={'/contact'} className="nav-link text-light">Contact</Link></li>
                         </ul>
                         <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret className="text-light">
-                                Get started
-                </DropdownToggle>
+                            <DropdownToggle nav caret className="text-light">Get started</DropdownToggle>
                             <DropdownMenu right>
                                 {this.props.isLoggedIn==='loggedIn'?
                                 <>

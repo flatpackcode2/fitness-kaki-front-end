@@ -43,7 +43,7 @@ const PlacesWithStandaloneSearchBox = compose(
       <Input
         className="form-control"
         type="text"
-        placeholder="Customize your placeholder"
+        placeholder="Enter a location here"
         style={{
           textOverflow: `ellipses`,
         }}

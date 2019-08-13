@@ -7,10 +7,11 @@ import {Button,
     Container,
     CardText,
     CardTitle,
-    Progress
+    Progress,
     } from 'reactstrap';
 import axios from 'axios';
 import Loader from '../images/loader.gif';
+import {Link} from "react-router-dom";
 
 class EventFeed extends React.Component{
     constructor(props){
@@ -18,13 +19,12 @@ class EventFeed extends React.Component{
         this.state={
             message:true,
             eventsList:[],
-            isLoading:true
+            isLoading:true,
         }
     }
 
     //retrieve all events via axios
     componentDidMount(){
-      console.log('MUAHAHAHA')
       axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
       .then(response =>{ 
         console.log('****');
@@ -37,13 +37,26 @@ class EventFeed extends React.Component{
       })
     }
 
+    getUserDetails=()=>{
+      let users=this.props.users
+      for (let idx=0;idx++; idx<users){
+        console.log(idx)
+        console.log(users[idx])
+        // if (userId==users[idx]['id']){
+        //   return users[idx];
+        // };
+      };
+    }
+
     render(){
+        console.log(this.getUserDetails())
         const {eventsList, isLoading} = this.state;
         console.log("eventsList is", eventsList)
         return(
           <div>
             <div>
               <h1>This Heading is in EventFeed.js</h1>
+                  <h4 className="text-center">Don't see a fitness meet you like? How about <Link to={'/events/create'}>creating your own</Link>?</h4>
                 {isLoading? 
                 <Container>
                   <Row className="d-flex align-items-center justify-content-center">
@@ -51,6 +64,7 @@ class EventFeed extends React.Component{
                   </Row>
                 </Container>
                 :
+  
                   eventsList.map((eventInList) => {
                   return(
                     <Container key={eventInList.id} className="my-2">
@@ -63,6 +77,7 @@ class EventFeed extends React.Component{
                             <CardBody className="p-1 text-left">
                               <CardTitle><h3>{eventInList.name}</h3></CardTitle>
                               <CardSubtitle>{eventInList.time}</CardSubtitle>
+                              <CardText>Host : {eventInList.host}</CardText>
                               <CardText>{eventInList.location}</CardText>
                               <CardText>{eventInList.description}</CardText>
                               <div className="text-center">Capacity: {eventInList.max_number} (this is just text for now)</div>

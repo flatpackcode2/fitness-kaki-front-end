@@ -92,7 +92,7 @@ class EventCreate extends React.Component{
         const {event_name, description, location, max_number, time} = this.state
         return(
             <div>
-                <h3>This is the event creation component</h3>
+                <h3 className="text-center">Create Your Event Here:</h3>
                 <Row className="d-flex justify-content-center">
                     <Col md="6">
                         <Form>

@@ -24,7 +24,8 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
-      loggedInStatus:'loggedOut'
+      loggedInStatus:'loggedOut',
+      users:[]
     }
   }
 
@@ -98,7 +99,6 @@ class App extends React.Component {
     }
 
     )
-    console.log(this.props)
   }
 
   LogOutAccount = () =>{
@@ -110,6 +110,19 @@ class App extends React.Component {
     )
 
     this.props.history.push('/')
+  }
+
+  //get a list of all users
+  getUserDetails=()=>{
+    axios({
+      method: 'GET',
+      url: 'https://final-project-healthy.herokuapp.com/api/v1/users/',
+    }).then(result => {
+      let temp_data = result.data;
+      this.setState({users:temp_data})
+    }).catch(error =>{
+      console.log(error)
+    })
   }
 
   render() {
@@ -154,7 +167,7 @@ class App extends React.Component {
           }} />
           <Route exact path='/events' component={props => {
             return (
-              <EventFeed {...props} />)
+              <EventFeed {...props} users={this.state.users} />)
           }} />
           <Route path='/events/create' component={props => {
             return (
