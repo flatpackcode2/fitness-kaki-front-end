@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from "./components/Home";
 import Upload from "./components/Upload";
+import NutritionList from "./components/NutritionList";
 import About from "./components/About";
 import User from "./components/User";
 import Contact from "./components/Contact";
@@ -128,6 +129,10 @@ class App extends React.Component {
           <Route path='/upload' component={props => {
             return (
               <Upload {...props} />)
+          }} />
+          <Route path='/nutrition/:food' component={props => {
+            return (
+              <NutritionList {...props} />)
           }} />
           <Route path='/about' component={props => {
             return (
