@@ -34,14 +34,20 @@ class NavBar extends React.Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto text-light" navbar>
                         <ul className="navbar-nav mr-auto">
-                            {/* <li><Link to={'/'} className="nav-link text-light"> Home </Link></li> */}
-                            {this.props.isLoggedIn==='loggedIn'?
-                                <li><Link to={'/events'} className="nav-link text-light">Events</Link></li>
-                            :null
+                            <li><Link to={'/'} className="nav-link text-light"> Home </Link></li>
+                            <li><Link to={'/about'}  className="nav-link text-light">About</Link></li>
+                            {this.props.isLoggedIn === 'loggedIn' ?
+                                <li><Link to={'/events'}  className="nav-link text-light">Events</Link></li>
+                                : null
                             }
-                            <li><Link to={'/upload'} className="nav-link text-light">Upload</Link></li>
-                            <li><Link to={'/about'} className="nav-link text-light">About</Link></li>
-                            <li><Link to={'/contact'} className="nav-link text-light">Contact</Link></li>
+                            {this.props.isLoggedIn === 'loggedIn' ?
+                                <li><Link to={'/upload'}  className="nav-link text-light">Upload</Link></li>
+                                : null
+                            }
+                            {this.props.isLoggedIn === 'loggedIn' ?
+                                <li><Link to={'/contact'}  className="nav-link text-light">Contact</Link></li>
+                                : null
+                            }
                         </ul>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret className="text-light">Get started</DropdownToggle>
