@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { file } from "@babel/types";
+import { Link } from 'react-router-dom'
 
 class Upload extends Component {
     constructor(props) {
@@ -73,7 +74,7 @@ class Upload extends Component {
                 </form>
                 {
                     this.state.names.slice(0, 5).map((name, key) =>
-                        <h1>{name.name}</h1>
+                        <Link to={`/nutrition/${name.name}`}>{name.name}</Link>
 
                     )
                 }

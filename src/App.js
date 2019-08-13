@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from "./components/Home";
 import Upload from "./components/Upload";
+import NutritionList from "./components/NutritionList";
 import About from "./components/About";
 import User from "./components/User";
 import Contact from "./components/Contact";
@@ -24,7 +25,7 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
-      loggedInStatus:'loggedOut'
+      loggedInStatus: 'loggedOut'
     }
   }
 
@@ -87,13 +88,13 @@ class App extends React.Component {
         password: `${this.state.password}`
       }
     }).then(result => {
-      let JWT =result.data.auth_token;
+      let JWT = result.data.auth_token;
       localStorage.setItem('userToken', JWT)
       console.log(result)
-      this.setState({loggedInStatus:'loggedIn'})
+      this.setState({ loggedInStatus: 'loggedIn' })
       // console.log(this.props)
       this.props.history.push('/profile')
-    }).catch(error =>{
+    }).catch(error => {
       console.log(error)
     }
 
@@ -101,12 +102,12 @@ class App extends React.Component {
     console.log(this.props)
   }
 
-  LogOutAccount = () =>{
+  LogOutAccount = () => {
     localStorage.removeItem('userToken')
     localStorage.setItem('loggedInStatus', 'loggedOut')
 
     this.setState(
-      {loggedInStatus:'loggedOut'}
+      { loggedInStatus: 'loggedOut' }
     )
 
     this.props.history.push('/')
@@ -116,7 +117,7 @@ class App extends React.Component {
 
     return (
       <>
-        <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount}/>
+        <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount} />
         <hr />
         <Switch>
           <Route exact path='/' component={props => {
@@ -126,6 +127,10 @@ class App extends React.Component {
           <Route path='/upload' component={props => {
             return (
               <Upload {...props} />)
+          }} />
+          <Route path='/nutrition/:food' component={props => {
+            return (
+              <NutritionList {...props} />)
           }} />
           <Route path='/about' component={props => {
             return (
