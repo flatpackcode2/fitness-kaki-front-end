@@ -26,3 +26,21 @@
     height: 210px;
     padding: 0.5em;
 }
+
+.fa {
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-about {
+  background:black;
+  color:black;
+}

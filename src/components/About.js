@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardDeck
+} from 'reactstrap';
 import './About.css'
-import Info from "../images/about.jpg"
-import Chat from "../images/Chat.png"
-import Company from "../images/company.png"
-import Developer from "../images/Developer.png"
+import About_Logo from "../images/about.png";
+import Chat_Logo from "../images/Chat.png";
+import Company_Logo from "../images/company.png";
+import Developer_Logo from "../images/Developer.png";
 import axios from 'axios';
 
 class About extends Component {
@@ -16,21 +20,36 @@ class About extends Component {
 
     render() {
         return (
-            <div className="wrapper">
-                <div id="wider-box" className="form-wrapper">
-                    <h1>About Us</h1>
-
-                    <div>
-                        <img src={Info} id="information" />
-                        <img src={Chat} id="chat" />
-                        <img src={Company} id="company" />
-                        <img src={Developer} id="developer" />
-                    </div>
-
-
-
-                </div>
-            </div>
+            <CardDeck>
+                <Card body className="text-center">
+                    <CardImg top width="50%" src={Company_Logo} alt="Card image cap" />
+                    <CardBody>
+                        <CardTitle>Company</CardTitle>
+                        <CardText>Information for our company</CardText>
+                    </CardBody>
+                </Card>
+                <Card body className="text-center">
+                    <CardImg top width="50%" src={Developer_Logo} alt="Card image cap" />
+                    <CardBody>
+                        <CardTitle>Developer</CardTitle>
+                        <CardText>Information about the developers that are working on this website</CardText>
+                    </CardBody>
+                </Card>
+                <Card body className="text-center">
+                    <CardImg top width="50%" src={Chat_Logo} alt="Card image cap" />
+                    <CardBody>
+                        <CardTitle>Chatroom</CardTitle>
+                        <CardText>Chat with our support team</CardText>
+                    </CardBody>
+                </Card>
+                <Card body className="text-center">
+                    <CardImg top width="50%" src={About_Logo} alt="Card image cap" class="fa fa-about" />
+                    <CardBody>
+                        <CardTitle>Other Information</CardTitle>
+                        <CardText>Look this up for any other FAQ</CardText>
+                    </CardBody>
+                </Card>
+            </CardDeck>
         );
     }
 }

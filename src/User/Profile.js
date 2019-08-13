@@ -15,8 +15,10 @@ class Profile extends Component {
                 email: "",
                 password: "",
                 loginSuccess: false,
-            }
+            },
         };
+        this.fileInputRef = React.createRef();
+        this.openFile = this.openFile.bind(this);
     }
 
     componentDidMount = async () => {
@@ -40,7 +42,9 @@ class Profile extends Component {
 
         this.props.LogMeUp(RegistrationApp);
     };
-
+    openFile() {
+        this.fileInputRef.current.click()
+    }
     render() {
         const { formErrors } = this.state;
 
@@ -48,7 +52,30 @@ class Profile extends Component {
             <div className="wrapper">
                 <div className="form-wrapper">
                     <h1>Profile</h1>
-                    <img src={Acc} id="account" />
+                    {/* <div className="Card"> */}
+                    <div className="imageinput" onClick={this.openFile}>
+                        {/* <img src={Acc} id="account" /> */}
+                        <input ref={this.fileInputRef} type="file" className="" style={{ display: 'none' }} />Choose profile picture
+                    </div>
+
+                    {/* </div> */}
+                    <br></br>
+                    <div class="form-group">
+                        <input type='text' name="new_email" class="form-control" value="Username" />
+                    </div>
+                    <div class="form-group">
+                        <input type='text' name="new_email" class="form-control" value="First name" />
+                    </div>
+                    <div class="form-group">
+                        <input type='text' name="new_email" class="form-control" value="Last name" />
+                    </div>
+                    <div class="form-group">
+                        <input type='text' name="new_email" class="form-control" value="Email" />
+                    </div>
+                    <div class="form-group">
+                        <input type='text' name="new_email" class="form-control" value="Password" />
+                    </div>
+                    <button>Save changes</button>
                 </div>
             </div>
         );

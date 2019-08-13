@@ -69,13 +69,7 @@ class Registration extends Component {
 
         switch (name) {
             case "firstname":
-                formErrors.firstname =
-                    value.length < 3 ? "minimum 3 characaters required" : "";
-                break;
             case "lastname":
-                formErrors.lastname =
-                    value.length < 3 ? "minimum 3 characaters required" : "";
-                break;
             case "username":
                 formErrors.username =
                     value.length < 8 ? "please use unique username" : "";
