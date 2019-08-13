@@ -27,7 +27,7 @@ class NutritionList extends React.Component {
 
     render() {
         return (
-            <div>Calories gained: {this.state.calories} per {this.state.weight}</div>
+            <div>Calories gained: {this.state.calories} per {this.state.weight}g</div>
         )
     }
 }
