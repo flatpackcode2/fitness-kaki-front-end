@@ -9,6 +9,7 @@ import {
         Row,
     } from "reactstrap"
 import axios from 'axios';
+import PlacesWithStandaloneSearchBox from "../components/PlacesWithStandaloneSearchBox";
 
 class EventCreate extends React.Component{
     constructor(props){
@@ -33,6 +34,10 @@ class EventCreate extends React.Component{
         }
         })
         console.clear()
+    }
+
+    liftMyLocationUp = locationFromGoogle =>{
+        this.setState({location:locationFromGoogle})
     }
 
     //handleSubmit lifts up field values 
@@ -87,17 +92,18 @@ class EventCreate extends React.Component{
         const {event_name, description, location, max_number, time} = this.state
         return(
             <div>
-                <h3>This is the event creation component</h3>
+                <h3 className="text-center">Create Your Event Here:</h3>
                 <Row className="d-flex justify-content-center">
                     <Col md="6">
                         <Form>
                             <FormGroup>
                                 <Label for="eventName">Event Name:</Label>
-                                <Input id="eventName" name="nameeventname" type="text" value={event_name} onChange={this.handleChange} placeholder="Give me a name"></Input>
+                                <Input id="eventName" type="text" value={event_name} onChange={this.handleChange} placeholder="Give me a name"></Input>
                                 <Label for="description">Description:</Label>
                                 <Input id="description" type="text" value={description} onChange={this.handleChange} placeholder="Share what I'm about"></Input>
                                 <Label for="location">Location:</Label>
-                                <Input id="location" type="text" value={location} onChange={this.handleChange} placeholder="Tell folks where to find me"></Input>
+                                <PlacesWithStandaloneSearchBox liftMyLocationUp={this.liftMyLocationUp}/>
+                                {/* <Input id="location" type="text" value={location} onChange={this.handleChange} placeholder="Tell folks where to find me"></Input> */}
                                 <Label for="time">Time:</Label>
                                 <Input id="time" type="datetime-local" value={time} onChange={this.handleChange}></Input>
                                 <Label for="maxNumber">Max Number:</Label>
