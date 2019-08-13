@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { file } from "@babel/types";
 import { Link } from 'react-router-dom'
+import './Upload.css'
 
 class Upload extends Component {
     constructor(props) {
@@ -74,7 +75,7 @@ class Upload extends Component {
                 </form>
                 {
                     this.state.names.slice(0, 5).map((name, key) =>
-                        <Link to={`/nutrition/${name.name}`}>{name.name}</Link>
+                        <Link color="black" to={`/nutrition/${name.name}`}>{name.name}</Link>
 
                     )
                 }
