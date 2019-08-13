@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './Profile.css'
 import Acc from "../images/account.png"
+import axios from 'axios'
 
 class Profile extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: null,
-            email: null,
-            password: null,
+            username: "",
+            email: "",
+            password: "",
+            first_name: "",
+            last_name: "",
             formErrors: {
                 username: "",
                 email: "",
@@ -21,37 +24,89 @@ class Profile extends Component {
         this.openFile = this.openFile.bind(this);
     }
 
-    componentDidMount = async () => {
-        // Retrieve JWT from localStorage
-        let JWT = await localStorage.getItem('userToken');
-        // Axios call to endpoint
+    // componentDidMount = async () => {
+    //     // Retrieve JWT from localStorage
+    // //     let JWT = await localStorage.getItem('userToken');
+    // //     // headers need Authorization: `Bearer ${JWT}`
+    // //     let config = {
+    // //         headers: {
+    // //             Authentication: `Bearer ${JWT}`
+    // //         }
+    // //     }
+    // //     // Axios call to endpoint
+    // //     axios.get('your end point', config)
+    // //         .then(results => {
+    // //             console.log(results)
+    // //         })
 
-        // headers need Authorization: `Bearer ${JWT}`
+    // //     // .then() you can set state with the user information
 
-        // .then() you can set state with the user information
-
-    }
+    // // }
 
     handleSubmit = e => {
         e.preventDefault()
-        const RegistrationApp = {
+        let JWT = localStorage.getItem('userToken');
+        let data = {
             username: this.state.username,
-            password: this.state.password
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            email: this.state.email
         }
+        console.log(`username is ${data['username']}`)
+        console.log(`first name is ${data['first_name']}`)
+        console.log(`last name is ${data['last_name']}`)
+        console.log(`email is ${data['email']}`)
+
+        axios.post('http://final-project-healthy.herokuapp.com/api/v1/users/update',
+            data,
+            {
+                headers: {
+                    Authorization: `Bearer ${JWT}`
+                },
+            }).then(result => {
+                // this.props.history.push('/profile')
+                console.log('MUAHAHAHAHA')
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(`Edit-Profile failed: ${error}`)
+                console.log(error)
+                // console.log(error.response.data.message)
+            })
+    }
 
 
-        this.props.LogMeUp(RegistrationApp);
-    };
+
+    // handleSubmit = e => {
+    //     e.preventDefault()
+    //     const RegistrationApp = {
+    //         username: this.state.username,
+    //         first_name: this.state.first_name,
+    //         last_name: this.state.last_name,
+    //         email: this.state.email
+    //     }
+
+
+    //     this.props.LogMeUp(RegistrationApp);
+    // };
+
     openFile() {
         this.fileInputRef.current.click()
     }
+    handleInput = (e) => {
+        e.preventDefault();
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState({ [name]: value });
+    }
+
     render() {
         const { formErrors } = this.state;
-
+        console.log(this.state)
         return (
             <div className="wrapper">
                 <div className="form-wrapper">
-                    <h1>Profile</h1>
+                    <h1>{this.props.current_user.first_name} Profile</h1>
                     {/* <div className="Card"> */}
                     <div className="imageinput" onClick={this.openFile}>
                         {/* <img src={Acc} id="account" /> */}
@@ -61,21 +116,18 @@ class Profile extends Component {
                     {/* </div> */}
                     <br></br>
                     <div class="form-group">
-                        <input type='text' name="new_email" class="form-control" value="Username" />
+                        <input type='text' name="username" className="form-control" onChange={this.handleInput} value={this.state.username} placeholder={this.props.current_user.username} />
                     </div>
                     <div class="form-group">
-                        <input type='text' name="new_email" class="form-control" value="First name" />
+                        <input type='text' name="first_name" className="form-control" onChange={this.handleInput} value={this.state.first_name} placeholder={this.props.current_user.first_name} />
                     </div>
                     <div class="form-group">
-                        <input type='text' name="new_email" class="form-control" value="Last name" />
+                        <input type='text' name="last_name" className="form-control" onChange={this.handleInput} value={this.state.last_name} placeholder={this.props.current_user.last_name} />
                     </div>
                     <div class="form-group">
-                        <input type='text' name="new_email" class="form-control" value="Email" />
+                        <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
-                    <div class="form-group">
-                        <input type='text' name="new_email" class="form-control" value="Password" />
-                    </div>
-                    <button>Save changes</button>
+                    <button onClick={this.handleSubmit}>Save changes</button>
                 </div>
             </div>
         );

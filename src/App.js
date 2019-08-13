@@ -26,8 +26,9 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
-      loggedInStatus:'loggedOut',
-      users:[]
+      loggedInStatus: 'loggedOut',
+      users: [],
+      current_user: {}
     }
   }
 
@@ -93,9 +94,7 @@ class App extends React.Component {
     }).then(result => {
       let JWT = result.data.auth_token;
       localStorage.setItem('userToken', JWT)
-      console.log(result)
-      this.setState({ loggedInStatus: 'loggedIn' })
-      // console.log(this.props)
+      this.setState({ loggedInStatus: 'loggedIn', current_user: result.data.user })
       this.props.history.push('/profile')
     }).catch(error => {
       console.log(error)
@@ -116,14 +115,14 @@ class App extends React.Component {
   }
 
   //get a list of all users
-  getUserDetails=()=>{
+  getUserDetails = () => {
     axios({
       method: 'GET',
       url: 'https://final-project-healthy.herokuapp.com/api/v1/users/',
     }).then(result => {
       let temp_data = result.data;
-      this.setState({users:temp_data})
-    }).catch(error =>{
+      this.setState({ users: temp_data })
+    }).catch(error => {
       console.log(error)
     })
   }
@@ -170,7 +169,7 @@ class App extends React.Component {
           }} />
           <Route path='/profile' component={props => {
             return (
-              <Profile {...props} />)
+              <Profile {...props} current_user={this.state.current_user} />)
           }} />
           <Route exact path='/events' component={props => {
             return (
