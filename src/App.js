@@ -12,6 +12,7 @@ import Profile from "./User/Profile";
 import EventFeed from "./pages/EventFeed";
 import EventCreate from "./pages/EventCreate";
 import axios from 'axios'
+import './App.css';
 
 
 class App extends React.Component {
@@ -24,7 +25,7 @@ class App extends React.Component {
       password: '',
       firstname: '',
       lastname: '',
-      loggedInStatus:'loggedOut'
+      loggedInStatus: 'loggedOut'
     }
   }
 
@@ -69,6 +70,7 @@ class App extends React.Component {
         // console.log(error.response.data.message)
       })
   }
+
   LogMeUp = (message) => {
     this.setState({
       username: message.username,
@@ -87,13 +89,13 @@ class App extends React.Component {
         password: `${this.state.password}`
       }
     }).then(result => {
-      let JWT =result.data.auth_token;
+      let JWT = result.data.auth_token;
       localStorage.setItem('userToken', JWT)
       console.log(result)
-      this.setState({loggedInStatus:'loggedIn'})
+      this.setState({ loggedInStatus: 'loggedIn' })
       // console.log(this.props)
       this.props.history.push('/profile')
-    }).catch(error =>{
+    }).catch(error => {
       console.log(error)
     }
 
@@ -101,12 +103,12 @@ class App extends React.Component {
     console.log(this.props)
   }
 
-  LogOutAccount = () =>{
+  LogOutAccount = () => {
     localStorage.removeItem('userToken')
     localStorage.setItem('loggedInStatus', 'loggedOut')
 
     this.setState(
-      {loggedInStatus:'loggedOut'}
+      { loggedInStatus: 'loggedOut' }
     )
 
     this.props.history.push('/')
@@ -116,7 +118,7 @@ class App extends React.Component {
 
     return (
       <>
-        <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount}/>
+        <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount} />
         <hr />
         <Switch>
           <Route exact path='/' component={props => {

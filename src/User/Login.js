@@ -54,19 +54,6 @@ class Login extends Component {
         const { name, value } = e.target;
         let formErrors = { ...this.state.formErrors };
 
-        switch (name) {
-            case "username":
-                formErrors.username =
-                    value.length < 8 ? "please use unique username" : "";
-                break;
-            case "password":
-                formErrors.password =
-                    value.length < 8 ? "minimum 8 characaters required" : "";
-                break;
-            default:
-                break;
-        }
-
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
     };
     render() {

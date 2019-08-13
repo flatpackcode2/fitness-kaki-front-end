@@ -66,14 +66,6 @@ class Registration extends Component {
         let formErrors = { ...this.state.formErrors };
 
         switch (name) {
-            case "firstname":
-                formErrors.firstname =
-                    value.length < 3 ? "minimum 3 characaters required" : "";
-                break;
-            case "lastname":
-                formErrors.lastname =
-                    value.length < 3 ? "minimum 3 characaters required" : "";
-                break;
             case "email":
                 formErrors.email = emailRegex.test(value)
                     ? ""
@@ -128,6 +120,7 @@ class Registration extends Component {
                                 <span className="errorMessage">{formErrors.lastname}</span>
                             )}
                         </div>
+
                         <div className="email">
                             <label htmlFor="email">Email</label>
                             <input
@@ -170,8 +163,6 @@ class Registration extends Component {
                                 className="form-control"
                                 rows="3" />
                         </div>
-
-
 
                         <div className="SM">
                             <label htmlFor="SM">Find us on these social media</label>

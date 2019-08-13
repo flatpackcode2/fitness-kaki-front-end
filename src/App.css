@@ -1,3 +1,21 @@
+.imageinput{
+  border-radius: 50%;
+  width:300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border:2px dashed black;
+}
+.Card{
+  align-items: flex-start;
+  padding: 64px;
+  display: flex;
+  border:1pxsolid black;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
 .App {
   text-align: center;
 }
