@@ -184,7 +184,7 @@ class App extends React.Component {
           }} />
           <Route exact path='/events' component={props => {
             return (
-              <EventFeed {...props} users={this.state.users} />)
+              <EventFeed {...props} current_user = {this.state.current_user} users={this.state.users} />)
           }} />
           <Route path='/events/create' component={props => {
             return (
