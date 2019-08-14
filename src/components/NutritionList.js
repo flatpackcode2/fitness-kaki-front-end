@@ -155,7 +155,8 @@ class NutritionList extends React.Component {
 
     componentDidMount = () => {
         axios.get(
-            `https://api.edamam.com/api/nutrition-data?app_id=822bb630&app_key=d74cb239cde3432c61110f49c24e8012&ingr=1%20${this.props.match.params.food}`
+            `https://api.edamam.com/api/nutrition-data?app_id=822bb630&app_key=
+            9cffd28bf3ea73be1b890e81df680f66&ingr=1%20${this.props.match.params.food}`
         )
             .then(results => {
                 this.setState({
