@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from "reactstrap"
 import './Profile.css'
 import Acc from "../images/account.png"
 import axios from 'axios'
@@ -114,7 +115,7 @@ class Profile extends Component {
                     {/* <div className="Card"> */}
                     <div className="imageinput" onClick={this.openFile}>
                         {/* <img src={Acc} id="account" /> */}
-                        <input ref={this.fileInputRef} type="file" className="" style={{ display: 'none' }} />Choose profile picture
+                        <input ref={this.fileInputRef} type="file" className="" style={{ display: 'none' }} on />Choose profile picture
                     </div>
 
                     {/* </div> */}
@@ -131,10 +132,7 @@ class Profile extends Component {
                     <div class="form-group">
                         <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
-                    <button type="button" onClick={this.handleSubmit} >Save changes</button>
-                    <div>
-                        <button onClick={refreshPage}>Click to reload!</button>
-                    </div>
+                    <Button color = "primary" onClick={this.handleSubmit} >Save changes</Button>
                 </div>
             </div>
         );
