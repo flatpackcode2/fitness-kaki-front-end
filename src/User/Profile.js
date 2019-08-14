@@ -132,9 +132,6 @@ class Profile extends Component {
                         <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
                     <button type="button" onClick={this.handleSubmit} >Save changes</button>
-                    <div>
-                        <button onClick={refreshPage}>Click to reload!</button>
-                    </div>
                 </div>
             </div>
         );

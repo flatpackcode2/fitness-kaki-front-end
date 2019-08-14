@@ -1,7 +1,5 @@
-
-
 .form-URL {
-  width: 70%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -10,4 +8,22 @@
   text-align:top;
   margin: 0 auto;
   display: block;
+}
+
+.add-picture{
+  margin: 0 auto;
+  widows: 70px;
+  margin-top: 10px;
+  width: 15%;
+  background-color: white;
+}
+
+.word{
+  margin-top: 50px;
+  color: white;
+}
+
+.text-light{
+  font-size: bold;
+  text-align: left;
 }
