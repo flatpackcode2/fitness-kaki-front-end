@@ -44,15 +44,14 @@ class EventFeed extends React.Component {
   }
 
   handleSubmit = e =>{
-    //make an api call to guestlist and add current user to guest list
+    //make an api call to guestlist and add or delete current user to guest list
     let event_id = e.target.id
     let JWT = localStorage.getItem('userToken')
     axios.post('https://final-project-healthy.herokuapp.com/api/v1/guestlists/',
     {event_id:event_id},
       {
-        headers: {
-            'content-type': 'application/json',
-            'Authorization': `Bearer ${JWT}`
+        headers:{
+            Authorization: `Bearer ${JWT}`
             }
       }
     ).then(response => {
@@ -91,7 +90,10 @@ class EventFeed extends React.Component {
             :
 
             eventsList.map((eventInList) => {
-              console.log(eventInList.image)
+              let guestlist=[]
+              if (eventInList.guests.includes(this.props.current_user.id)){
+                console.log('The user is here!')
+              }
               return (
                 <Container key={eventInList.id} className="my-2">
                   <Card color="info">
@@ -112,10 +114,12 @@ class EventFeed extends React.Component {
                               <Progress color="success" value={Math.floor(eventInList.guests.length/eventInList.max_number*100)} />
                             </Col>
                             <Col md="4">
-                            <Form>
-                              <Input type="hidden" value={eventInList.id}></Input>
-                              <Button id={eventInList.id} color="success" onClick={this.handleSubmit}>Join</Button>
-                            </Form>
+                            {eventInList.guests.includes(this.props.current_user.id)
+                               ?
+                                <Button id={eventInList.id} color="danger" onClick={this.handleSubmit}>Leave</Button>
+                              :
+                                <Button id={eventInList.id} color="success" onClick={this.handleSubmit}>Join</Button>
+                            }
                             </Col>
                           </Row>
                         </CardBody>
