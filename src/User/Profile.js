@@ -65,8 +65,8 @@ class Profile extends Component {
                 },
             }).then(result => {
                 // this.props.history.push('/profile')
-                console.log('MUAHAHAHAHA')
-                console.log(result)
+                localStorage.setItem('userData', JSON.stringify(result.data.updated_details))
+                this.props.updateDetails()
             })
             .catch(error => {
                 console.log(`Edit-Profile failed: ${error}`)
@@ -100,9 +100,13 @@ class Profile extends Component {
         this.setState({ [name]: value });
     }
 
+
     render() {
         const { formErrors } = this.state;
         console.log(this.state)
+        function refreshPage() {
+            window.location.reload(false);
+        }
         return (
             <div className="wrapper">
                 <div className="form-wrapper">
@@ -127,7 +131,10 @@ class Profile extends Component {
                     <div class="form-group">
                         <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
-                    <button onClick={this.handleSubmit}>Save changes</button>
+                    <button type="button" onClick={this.handleSubmit} >Save changes</button>
+                    <div>
+                        <button onClick={refreshPage}>Click to reload!</button>
+                    </div>
                 </div>
             </div>
         );

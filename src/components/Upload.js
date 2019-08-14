@@ -69,13 +69,14 @@ class Upload extends Component {
         return (
             < div className="wrapper" >
                 <form  >
-                    <div className="form-group" >
+                    <h1>Please insert an URL of picture and wait for the result</h1>
+                    <div className="form-URL" >
                         <input onChange={e => this.predictImage(e)} name="image" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Select URL" />
                     </div>
                 </form>
                 {
                     this.state.names.slice(0, 5).map((name, key) =>
-                        <Link color="black" to={`/nutrition/${name.name}`}>{name.name}</Link>
+                        <Link className="text-light" to={`/nutrition/${name.name}`}>{name.name}</Link>
 
                     )
                 }

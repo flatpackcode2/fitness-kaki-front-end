@@ -32,13 +32,21 @@ class App extends React.Component {
     }
   }
 
-  // componentDidMount=()=>{
-  //   let loginStatus=localStorage.getItem('loggedInStatus')
+  componentDidMount = () => {
+    let loginStatus = localStorage.getItem('loggedInStatus')
+    let userData = localStorage.getItem('userData')
+    this.setState({
+      loggedInStatus: loginStatus,
+      current_user: JSON.parse(userData)
+    })
+  }
 
-  //   this.setState({
-  //     loggedinStatus:loginStatus
-  //   })
-  // }
+  updateDetails = () => {
+    let userData = localStorage.getItem('userData')
+    this.setState({
+      current_user: JSON.parse(userData)
+    })
+  }
 
   LiftMeUp = (message) => {
     this.setState({
@@ -94,6 +102,8 @@ class App extends React.Component {
     }).then(result => {
       let JWT = result.data.auth_token;
       localStorage.setItem('userToken', JWT)
+      localStorage.setItem('userData', JSON.stringify(result.data.user))
+      localStorage.setItem('loggedInStatus', 'loggedIn')
       this.setState({ loggedInStatus: 'loggedIn', current_user: result.data.user })
       this.props.history.push('/profile')
     }).catch(error => {
@@ -105,6 +115,7 @@ class App extends React.Component {
 
   LogOutAccount = () => {
     localStorage.removeItem('userToken')
+    localStorage.removeItem('userData')
     localStorage.setItem('loggedInStatus', 'loggedOut')
 
     this.setState(
@@ -169,7 +180,7 @@ class App extends React.Component {
           }} />
           <Route path='/profile' component={props => {
             return (
-              <Profile {...props} current_user={this.state.current_user} />)
+              <Profile {...props} updateDetails={this.updateDetails} current_user={this.state.current_user} />)
           }} />
           <Route exact path='/events' component={props => {
             return (
