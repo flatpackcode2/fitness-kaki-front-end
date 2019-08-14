@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Button} from "reactstrap"
+import { Button } from "reactstrap"
 import './Profile.css'
-import Acc from "../images/account.png"
+import Dominic from "../images/Dominic.jpg"
 import axios from 'axios'
 
 class Profile extends Component {
@@ -111,11 +111,11 @@ class Profile extends Component {
         return (
             <div className="wrapper">
                 <div className="form-wrapper">
-                    <h1>{this.props.current_user.first_name} Profile</h1>
+                    <h1>{this.props.current_user.first_name}'s Profile</h1>
                     {/* <div className="Card"> */}
-                    <div className="imageinput" onClick={this.openFile}>
+                    <div>
                         {/* <img src={Acc} id="account" /> */}
-                        <input ref={this.fileInputRef} type="file" className="" style={{ display: 'none' }} on />Choose profile picture
+                        <img src={Dominic} style={{ width: '270px', display: 'block', margin: 'auto' }} />
                     </div>
 
                     {/* </div> */}
@@ -132,7 +132,7 @@ class Profile extends Component {
                     <div class="form-group">
                         <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
-                    <Button color = "primary" onClick={this.handleSubmit} >Save changes</Button>
+                    <Button color="primary" onClick={this.handleSubmit} >Save changes</Button>
                 </div>
             </div>
         );

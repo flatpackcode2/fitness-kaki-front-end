@@ -153,27 +153,26 @@ class NutritionList extends React.Component {
         }
     }
 
-    componentDidMount = () => {
-        axios.get(
-            `https://api.edamam.com/api/nutrition-data?app_id=822bb630&app_key=
-            9cffd28bf3ea73be1b890e81df680f66&ingr=1%20${this.props.match.params.food}`
-        )
-            .then(results => {
-                this.setState({
-                    calories: results.data.calories,
-                    weight: results.data.totalWeight
-                })
+    // componentDidMount = () => {
+    //     axios.get(
+    //         `https://api.edamam.com/api/nutrition-data?app_id=c8ac25e9&app_key=76af2dd05c0535f8be45f0272f78be31&ingr=1${encodeURI(this.props.match.params.food)}`
+    //     )
+    //         .then(results => {
+    //             this.setState({
+    //                 calories: results.data.calories,
+    //                 weight: results.data.totalWeight
+    //             })
 
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
-    }
+    //         })
+    //         .catch(error => {
+    //             console.log(error.response)
+    //         })
+    // }
 
     render() {
         return (
             <div style={{ textAlign: 'center' }}>
-                <div>Calories gained: {this.state.calories} per {this.state.weight}g</div><br></br>
+                <div>Calories gained: {this.state.calories = 400} per {this.state.weight = 350}g</div><br></br>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>Activity required to burn <input style={{
                     width: '100px',
                     height: '30px',
@@ -181,14 +180,14 @@ class NutritionList extends React.Component {
                     marginLeft: '14px'
                 }} onChange={g => this.weightChange(g)} name="calorieAmount" type="text" className="form-control" id="" aria-describedby="" placeholder={this.state.weight} /> grams of {this.props.match.params.food}</div>
                 <br></br>
-                <div><img src={Calories} class="fa fa-cycling" /> Total Calories: {this.state.totalCalories} </div>
-                <div><img src={Cycling} class="fa fa-cycling" /> {this.state.bicycle_leisure_hours} Cycling</div>
-                <div><img src={Jogging} class="fa fa-cycling" /> {this.state.running_leisure_hours} Jogging</div>
-                <div><img src={Running} class="fa fa-cycling" /> {this.state.running_moderate_hours} Running</div>
-                <div><img src={Basketball} class="fa fa-cycling" /> {this.state.basketball_hours} Basketball</div>
-                <div><img src={Swimming} class="fa fa-cycling" /> {this.state.swimming_hours} Swimming</div>
-                <div><img src={Badminton} class="fa fa-cycling" /> {this.state.badminton_hours} Badminton</div>
-                <div><img src={Soccer} class="fa fa-cycling" /> {this.state.soccer_hours} Soccer</div>
+                <div><img src={Calories} className="fa fa-cycling" /> Total Calories: {this.state.totalCalories} </div>
+                <div><img src={Cycling} className="fa fa-cycling" /> {this.state.bicycle_leisure_hours} Cycling</div>
+                <div><img src={Jogging} className="fa fa-cycling" /> {this.state.running_leisure_hours} Jogging</div>
+                <div><img src={Running} className="fa fa-cycling" /> {this.state.running_moderate_hours} Running</div>
+                <div><img src={Basketball} className="fa fa-cycling" /> {this.state.basketball_hours} Basketball</div>
+                <div><img src={Swimming} className="fa fa-cycling" /> {this.state.swimming_hours} Swimming</div>
+                <div><img src={Badminton} className="fa fa-cycling" /> {this.state.badminton_hours} Badminton</div>
+                <div><img src={Soccer} className="fa fa-cycling" /> {this.state.soccer_hours} Soccer</div>
 
 
 
