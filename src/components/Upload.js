@@ -36,10 +36,6 @@ class Upload extends Component {
         };
     };
 
-    // predict_click = (value, source) => {
-    //     let preview = $(".food-photo");
-    //     let imageFile = document.querySelector("input[type=file]").files[0];
-
     predictImage = (e) => {
         let image = '';
         this.toData(e.target.value, (myBase64) => {

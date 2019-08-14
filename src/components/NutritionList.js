@@ -1,5 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import Cycling from "../images/Cycling.png"
+import Jogging from "../images/jogging.png"
+import Running from "../images/Running.jpg"
+import Basketball from "../images/Basketball.png"
+import Swimming from "../images/Swimming.png"
+import Soccer from "../images/Soccer.png"
+import Badminton from "../images/Badminton.jpg"
+import Calories from "../images/Calories.png"
+import "./NutritionList.css"
 
 class NutritionList extends React.Component {
     constructor(props) {
@@ -12,6 +21,7 @@ class NutritionList extends React.Component {
     weightChange = (g) => {
         if (g.target.value) {
             let totalCalories = (g.target.value * this.state.calories) / this.state.weight
+            var roundCalories = Math.round(totalCalories)
 
             // bicycle leisure
             let bicycle_leisure = totalCalories / 300
@@ -64,7 +74,7 @@ class NutritionList extends React.Component {
 
 
             this.setState({
-                totalCalories: totalCalories,
+                totalCalories: roundCalories,
                 bicycle_leisure_hours: bicycle_leisure_hours,
                 running_leisure_hours: running_leisure_hours,
                 running_moderate_hours: running_moderate_hours,
@@ -76,6 +86,7 @@ class NutritionList extends React.Component {
         }
         else {
             let totalCalories = this.state.calories
+            var roundCalories = Math.round(totalCalories)
 
             // bicycle leisure
             let bicycle_leisure = totalCalories / 300
@@ -128,7 +139,7 @@ class NutritionList extends React.Component {
 
 
             this.setState({
-                totalCalories: totalCalories,
+                totalCalories: roundCalories,
                 bicycle_leisure_hours: bicycle_leisure_hours,
                 running_leisure_hours: running_leisure_hours,
                 running_moderate_hours: running_moderate_hours,
@@ -144,7 +155,8 @@ class NutritionList extends React.Component {
 
     componentDidMount = () => {
         axios.get(
-            `https://api.edamam.com/api/nutrition-data?app_id=822bb630&app_key=d74cb239cde3432c61110f49c24e8012&ingr=1%20${this.props.match.params.food}`
+            `https://api.edamam.com/api/nutrition-data?app_id=822bb630&app_key=
+            9cffd28bf3ea73be1b890e81df680f66&ingr=1%20${this.props.match.params.food}`
         )
             .then(results => {
                 this.setState({
@@ -160,7 +172,7 @@ class NutritionList extends React.Component {
 
     render() {
         return (
-            <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <div style={{ textAlign: 'center' }}>
                 <div>Calories gained: {this.state.calories} per {this.state.weight}g</div><br></br>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>Activity required to burn <input style={{
                     width: '100px',
@@ -168,16 +180,18 @@ class NutritionList extends React.Component {
                     marginRight: '14px',
                     marginLeft: '14px'
                 }} onChange={g => this.weightChange(g)} name="calorieAmount" type="text" className="form-control" id="" aria-describedby="" placeholder={this.state.weight} /> grams of {this.props.match.params.food}</div>
-                {/* <img style={{ width: '600px' }} src={chart}></img> */}
                 <br></br>
-                <div> Total Calories: {this.state.totalCalories} </div>
-                <div> {this.state.bicycle_leisure_hours} Cycling </div>
-                <div> {this.state.running_leisure_hours} Jogging</div>
-                <div> {this.state.running_moderate_hours} Running</div>
-                <div> {this.state.basketball_hours} Basketball</div>
-                <div> {this.state.swimming_hours} Swimming</div>
-                <div> {this.state.badminton_hours} Badminton</div>
-                <div> {this.state.soccer_hours} Soccer</div>
+                <div><img src={Calories} class="fa fa-cycling" /> Total Calories: {this.state.totalCalories} </div>
+                <div><img src={Cycling} class="fa fa-cycling" /> {this.state.bicycle_leisure_hours} Cycling</div>
+                <div><img src={Jogging} class="fa fa-cycling" /> {this.state.running_leisure_hours} Jogging</div>
+                <div><img src={Running} class="fa fa-cycling" /> {this.state.running_moderate_hours} Running</div>
+                <div><img src={Basketball} class="fa fa-cycling" /> {this.state.basketball_hours} Basketball</div>
+                <div><img src={Swimming} class="fa fa-cycling" /> {this.state.swimming_hours} Swimming</div>
+                <div><img src={Badminton} class="fa fa-cycling" /> {this.state.badminton_hours} Badminton</div>
+                <div><img src={Soccer} class="fa fa-cycling" /> {this.state.soccer_hours} Soccer</div>
+
+
+
 
 
             </div>

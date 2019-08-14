@@ -64,7 +64,7 @@ class EventFeed extends React.Component {
         console.log(response);
         let tempEventList = response.data;
         this.setState({ eventsList: tempEventList, isLoading: false })
-        // console.log(tempEventList)
+        console.log(tempEventList)
       })
       .catch(error => {
         console.log('ERROR: ', error);
@@ -76,12 +76,11 @@ class EventFeed extends React.Component {
 }
 
   render() {
-
     const { eventsList, isLoading } = this.state;
     return (
       <div>
         <div>
-          <h1>This Heading is in EventFeed.js</h1>
+          <h1>Events Near You</h1>
           <h4 className="text-center">Don't see a fitness meet you like? How about <Link to={'/events/create'}>creating your own</Link>?</h4>
           {isLoading ?
             <Container>
@@ -92,12 +91,13 @@ class EventFeed extends React.Component {
             :
 
             eventsList.map((eventInList) => {
+              console.log(eventInList.image)
               return (
                 <Container key={eventInList.id} className="my-2">
                   <Card color="info">
                     <Row md="10" className="d-flex align-items-center rounded">
                       <Col md="3" className=" d-flex justify-content-center align-item-center rounded">
-                        <img width="100%" className="border border-white p1 rounded" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Capitals-Maple_Leafs_%2834075134291%29.jpg" alt="event image" />
+                        <img width="100%" className="border border-white p1 rounded" src={eventInList.image} alt="event image" />
                       </Col>
                        <Col md="9" className="rounded">
                         <CardBody className="p-1 text-left">

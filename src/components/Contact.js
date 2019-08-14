@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Row, Col} from "reactstrap"
+import { Row, Col } from "reactstrap"
 import "./Contact.css";
 import FB from "../images/facebook.png"
 import Insta from "../images/instagram.png"
@@ -89,106 +89,106 @@ class Registration extends Component {
 
         return (
             <div className="wrapper">
-            <div className="row">
-            <div className="form-wrapper">                   
-            <MapContainer/>
-                </div>
-                <div className="form-wrapper">
-                    <h1>Write To Us</h1>
-                    <form onSubmit={this.handleSubmit} noValidate>
+                <div className="row">
+                    <div className="form-wrapper">
+                        <MapContainer />
+                    </div>
+                    <div className="form-wrapper">
+                        <h1>Write To Us</h1>
+                        <form onSubmit={this.handleSubmit} noValidate>
 
-                        <div className="firstname">
-                            <label htmlFor="firstname">First Name</label>
-                            <input
-                                className={formErrors.firstname.length > 0 ? "error" : null}
-                                placeholder="First Name"
-                                type="text"
-                                name="firstname"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.firstname.length > 0 && (
-                                <span className="errorMessage">{formErrors.firstname}</span>
-                            )}
-                        </div>
+                            <div className="firstname">
+                                <label htmlFor="firstname">First Name</label>
+                                <input
+                                    className={formErrors.firstname.length > 0 ? "error" : null}
+                                    placeholder="First Name"
+                                    type="text"
+                                    name="firstname"
+                                    noValidate
+                                    onChange={this.handleChange}
+                                />
+                                {formErrors.firstname.length > 0 && (
+                                    <span className="errorMessage">{formErrors.firstname}</span>
+                                )}
+                            </div>
 
-                        <div className="lastname">
-                            <label htmlFor="lastname">Last Name</label>
-                            <input
-                                className={formErrors.lastname.length > 0 ? "error" : null}
-                                placeholder="Last Name"
-                                type="text"
-                                name="lastname"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.lastname.length > 0 && (
-                                <span className="errorMessage">{formErrors.lastname}</span>
-                            )}
-                        </div>
+                            <div className="lastname">
+                                <label htmlFor="lastname">Last Name</label>
+                                <input
+                                    className={formErrors.lastname.length > 0 ? "error" : null}
+                                    placeholder="Last Name"
+                                    type="text"
+                                    name="lastname"
+                                    noValidate
+                                    onChange={this.handleChange}
+                                />
+                                {formErrors.lastname.length > 0 && (
+                                    <span className="errorMessage">{formErrors.lastname}</span>
+                                )}
+                            </div>
 
-                        <div className="email">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                className={formErrors.email.length > 0 ? "error" : null}
-                                placeholder="Email"
-                                type="email"
-                                name="email"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.email.length > 0 && (
-                                <span className="errorMessage">{formErrors.email}</span>
-                            )}
-                        </div>
+                            <div className="email">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    className={formErrors.email.length > 0 ? "error" : null}
+                                    placeholder="Email"
+                                    type="email"
+                                    name="email"
+                                    noValidate
+                                    onChange={this.handleChange}
+                                />
+                                {formErrors.email.length > 0 && (
+                                    <span className="errorMessage">{formErrors.email}</span>
+                                )}
+                            </div>
 
-                        <div className="subject">
-                            <label htmlFor="subject">Subject</label>
-                            <input
-                                className={formErrors.email.length > 0 ? "error" : null}
-                                placeholder="Subject"
-                                type="subject"
-                                name="subject"
-                                noValidate
-                                onChange={this.handleChange}
-                            />
-                            {formErrors.email.length > 0 && (
-                                <span className="errorMessage">{formErrors.email}</span>
-                            )}
-                        </div>
+                            <div className="subject">
+                                <label htmlFor="subject">Subject</label>
+                                <input
+                                    className={formErrors.email.length > 0 ? "error" : null}
+                                    placeholder="Subject"
+                                    type="subject"
+                                    name="subject"
+                                    noValidate
+                                    onChange={this.handleChange}
+                                />
+                                {formErrors.email.length > 0 && (
+                                    <span className="errorMessage">{formErrors.email}</span>
+                                )}
+                            </div>
 
-                        <div className="message">
-                            <label
-                                htmlFor="message"
-                                className="grey-text"
-                            >Your message
+                            <div className="message">
+                                <label
+                                    htmlFor="message"
+                                    className="grey-text"
+                                >Your message
                             </label>
-                            <textarea
-                                type="text"
-                                id="message"
-                                className="form-control"
-                                rows="3" />
-                        </div>
+                                <textarea
+                                    type="text"
+                                    id="message"
+                                    className="form-control"
+                                    rows="3" />
+                            </div>
 
-                        <div className="SM">
-                            <label htmlFor="SM">Find us on these social media</label>
-                        </div>
+                            <div className="SM">
+                                <label htmlFor="SM">Find us on these social media</label>
+                            </div>
 
-                        <div>
-                            <img src={FB} class="fa fa-facebook" />
-                            <img src={Insta} class="fa fa-insta" />
-                            <img src={Linkin} class="fa fa-linkin" />
-                            <img src={Twitter} class="fa fa-twitter" />
-                            <img src={Whatssap} class="fa fa-facebook" />
-                        </div>
+                            <div>
+                                <img src={FB} class="fa fa-facebook" />
+                                <img src={Insta} class="fa fa-insta" />
+                                <img src={Linkin} class="fa fa-linkin" />
+                                <img src={Twitter} class="fa fa-twitter" />
+                                <img src={Whatssap} class="fa fa-facebook" />
+                            </div>
 
-                        <div className="createAccount">
-                            <button type="submit" href="/profile">Send</button>
-                        </div>
-                    </form>
+                            <div className="createAccount">
+                                <button type="submit" href="/profile">Send</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                </div>
-                </div>
+            </div>
         );
     }
 }

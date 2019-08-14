@@ -1,0 +1,13 @@
+fa {
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .fa-facebook {
+    background:white;
+    color: white;
+  }
