@@ -45,7 +45,6 @@ class Login extends Component {
             password: this.state.password
         }
 
-
         this.props.LogMeUp(RegistrationApp);
     };
 
@@ -58,7 +57,7 @@ class Login extends Component {
     };
     render() {
         const { formErrors } = this.state;
-
+        console.log(formErrors)
         return (
             <div className="wrapper">
                 <div className="form-wrapper">
