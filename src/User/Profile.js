@@ -64,9 +64,9 @@ class Profile extends Component {
                     Authorization: `Bearer ${JWT}`
                 },
             }).then(result => {
-                // this.props.history.push('/profile')
                 console.log('MUAHAHAHAHA')
                 console.log(result)
+                this.props.history.push('/profile')
             })
             .catch(error => {
                 console.log(`Edit-Profile failed: ${error}`)
