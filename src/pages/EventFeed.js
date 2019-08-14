@@ -80,7 +80,7 @@ class EventFeed extends React.Component {
     return (
       <div>
         <div>
-          <h1>This Heading is in EventFeed.js</h1>
+          <h1>Events Near You</h1>
           <h4 className="text-center">Don't see a fitness meet you like? How about <Link to={'/events/create'}>creating your own</Link>?</h4>
           {isLoading ?
             <Container>
