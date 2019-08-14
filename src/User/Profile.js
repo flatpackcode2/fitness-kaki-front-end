@@ -132,7 +132,7 @@ class Profile extends Component {
                     <div class="form-group">
                         <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
-                    <Button color = "primary" onClick={this.handleSubmit} >Save changes</Button>
+                    <button type="button" onClick={this.handleSubmit} >Save changes</button>
                 </div>
             </div>
         );

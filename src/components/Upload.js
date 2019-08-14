@@ -107,26 +107,26 @@ class Upload extends Component {
     render() {
         return (
             < div className="wrapper" >
-                <div>
-                    <form  >
-                        <h1>Please insert an URL of picture and wait for the result</h1>
-                        <div className="form-URL" >
-                            <input onChange={e => this.predictImage(e)} name="image" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Select URL" />
-                        </div>
-                        <br></br>
-                        <input className='file'
-                            type="file"
-                            id="imageFile"
-                            name='imageFile'
-                            onChange={f => this.predictImageFile(f)} />
-                    </form>
-                    {
-                        this.state.names.slice(0, 5).map((name, key) =>
-                            <Link className="text-light" to={`/nutrition/${name.name}`}>{name.name}</Link>
+                <form  >
+                    <h1 class="word">Please insert an URL of picture and wait for the result</h1>
+                    <div className="form-URL" >
+                        <input onChange={e => this.predictImage(e)} name="image" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Select URL" />
+                    </div>
+                    <br></br>
+                    <h1 class="word">Or insert a food picture that you have saved</h1>
+                    <br></br>
+                    <input className="add-picture"
+                        type="file"
+                        id="imageFile"
+                        name='imageFile'
+                        onChange={f => this.predictImageFile(f)} />
+                </form>
+                {
+                    this.state.names.slice(0, 5).map((name, key) =>
+                        <b><Link className="text-light" to={`/nutrition/${name.name}`}>{name.name}</Link></b>
 
-                        )
-                    }
-                </div>
+                    )
+                }
             </div >
         );
     }

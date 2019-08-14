@@ -7,6 +7,10 @@ const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
+const passwordRegex = RegExp(
+    /(?=.*[0-9])/
+);
+
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
 
@@ -80,8 +84,9 @@ class Registration extends Component {
                     : "invalid email address";
                 break;
             case "password":
-                formErrors.password =
-                    value.length < 8 ? "minimum 8 characaters required" : "";
+                formErrors.password = passwordRegex.test(value)
+                    ? ""
+                    : "Should contain 8 character long, at least 1 number, 1 big letter, and 1 small letter";
                 break;
             default:
                 break;

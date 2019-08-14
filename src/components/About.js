@@ -20,6 +20,7 @@ class About extends Component {
 
     render() {
         return (
+
             <CardDeck>
                 <Card body className="text-center">
                     <CardImg top width="50%" src={Company_Logo} alt="Card image cap" />
