@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import {Row, Col} from "reactstrap"
 import "./Contact.css";
 import FB from "../images/facebook.png"
 import Insta from "../images/instagram.png"
 import Linkin from "../images/linkin.png"
 import Twitter from "../images/twitter.png"
 import Whatssap from "../images/whatssap.png"
+import MapContainer from "./MapContainer"
 import axios from 'axios';
 
 
@@ -87,6 +89,10 @@ class Registration extends Component {
 
         return (
             <div className="wrapper">
+            <div className="row">
+            <div className="form-wrapper">                   
+            <MapContainer/>
+                </div>
                 <div className="form-wrapper">
                     <h1>Write To Us</h1>
                     <form onSubmit={this.handleSubmit} noValidate>
@@ -181,7 +187,8 @@ class Registration extends Component {
                         </div>
                     </form>
                 </div>
-            </div>
+                </div>
+                </div>
         );
     }
 }
