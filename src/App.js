@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from "./components/Home";
 import Upload from "./components/Upload";
@@ -143,7 +143,6 @@ class App extends React.Component {
     return (
       <>
         <NavBar isLoggedIn={this.state.loggedInStatus} logout={this.LogOutAccount} />
-        <hr />
         <Switch>
           <Route exact path='/' component={props => {
             return (

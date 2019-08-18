@@ -60,10 +60,10 @@ class NutritionList extends React.Component {
 
             // badminton
             let badminton = totalCalories / 400
-            var b_rhours = Math.floor(badminton);
-            var b_minutes = (badminton - b_rhours) * 60;
-            var b_rminutes = Math.round(b_minutes);
-            var badminton_hours = b_rhours + " hour(s) and " + b_rminutes + " minute(s)";
+            var bd_rhours = Math.floor(badminton);
+            var bd_minutes = (badminton - bd_rhours) * 60;
+            var bd_rminutes = Math.round(bd_minutes);
+            var badminton_hours = b_rhours + " hour(s) and " + bd_rminutes + " minute(s)";
 
             // soccer
             let soccer = totalCalories / 610
@@ -125,9 +125,9 @@ class NutritionList extends React.Component {
 
             // badminton
             let badminton = totalCalories / 400
-            var b_rhours = Math.floor(badminton);
-            var b_minutes = (badminton - b_rhours) * 60;
-            var b_rminutes = Math.round(b_minutes);
+            var bd_rhours = Math.floor(badminton);
+            var bd_minutes = (badminton - b_rhours) * 60;
+            var bd_rminutes = Math.round(b_minutes);
             var badminton_hours = b_rhours + " hour(s) and " + b_rminutes + " minute(s)";
 
             // soccer

@@ -103,11 +103,7 @@ class Profile extends Component {
 
 
     render() {
-        const { formErrors } = this.state;
         console.log(this.state)
-        function refreshPage() {
-            window.location.reload(false);
-        }
         return (
             <div className="wrapper">
                 <div className="form-wrapper">
@@ -115,21 +111,21 @@ class Profile extends Component {
                     {/* <div className="Card"> */}
                     <div>
                         {/* <img src={Acc} id="account" /> */}
-                        <img src={Dominic} style={{ width: '270px', display: 'block', margin: 'auto' }} />
+                        <img src={Dominic} style={{ width: '270px', display: 'block', margin: 'auto' }} alt="react is a pain"/>
                     </div>
 
                     {/* </div> */}
                     <br></br>
-                    <div class="form-group">
+                    <div className="form-group">
                         <input type='text' name="username" className="form-control" onChange={this.handleInput} value={this.state.username} placeholder={this.props.current_user.username} />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <input type='text' name="first_name" className="form-control" onChange={this.handleInput} value={this.state.first_name} placeholder={this.props.current_user.first_name} />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <input type='text' name="last_name" className="form-control" onChange={this.handleInput} value={this.state.last_name} placeholder={this.props.current_user.last_name} />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <input type='text' name="email" className="form-control" onChange={this.handleInput} value={this.state.email} placeholder={this.props.current_user.email} />
                     </div>
                     <Button color="primary" onClick={this.handleSubmit} >Save changes</Button>

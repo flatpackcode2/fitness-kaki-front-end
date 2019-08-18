@@ -3,15 +3,12 @@ import {
   Button,
   Row,
   Col,
-  Card,
   CardBody,
   CardSubtitle,
   Container,
   CardText,
   CardTitle,
   Progress,
-  Form,
-  Input
 } from 'reactstrap';
 import axios from 'axios';
 import Loader from '../images/loader.gif';
@@ -32,15 +29,27 @@ class EventFeed extends React.Component {
   componentDidMount() {
     axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
       .then(response => {
-        console.log('Component did mount~')
-        console.log(response);
         let tempEventList = response.data;
         this.setState({ eventsList: tempEventList, isLoading: false })
-        // console.log(tempEventList)
       })
       .catch(error => {
         console.log('ERROR: ', error);
       })
+  }
+
+  refreshFeed = () =>{
+    axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
+      .then(response => {
+        let tempEventList = response.data;
+        this.setState({ eventsList: tempEventList, isLoading: false })
+      })
+      .catch(error => {
+        console.log('ERROR: ', error);
+      })
+  }
+
+  componentDidUpdate(){
+    this.refreshFeed();
   }
 
   handleSubmit = e =>{
@@ -56,19 +65,7 @@ class EventFeed extends React.Component {
       }
     ).then(response => {
       console.log(response);
-
-      axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
-      .then(response => {
-        console.log('Component did mount~')
-        console.log(response);
-        let tempEventList = response.data;
-        this.setState({ eventsList: tempEventList, isLoading: false })
-        console.log(tempEventList)
-      })
-      .catch(error => {
-        console.log('ERROR: ', error);
-      })
-
+      this.refreshFeed();
   }).catch(error => {
       console.log("ERROR in request: ", error)
   })
@@ -96,18 +93,16 @@ class EventFeed extends React.Component {
               }
               return (
                 <Container key={eventInList.id} className="my-2">
-                  <Card color="info">
-                    <Row md="10" className="d-flex align-items-center rounded">
-                      <Col md="3" className=" d-flex justify-content-center align-item-center rounded">
-                        <img width="100%" className="border border-white p1 rounded" src={eventInList.image} alt="event image" />
+                    <Row md="10" className="d-flex align-items-center rounded bg-info">
+                      <Col md="4" className=" d-flex justify-content-center align-item-center rounded">
+                        <img width="200px" height="200px" className="border border-white m-3 rounded justify-content-center" src={eventInList.image} alt="event image" />
                       </Col>
-                       <Col md="9" className="rounded">
+                       <Col md="8" className="rounded">
                         <CardBody className="p-1 text-left">
                           <CardTitle><h3 className='text-light'>{eventInList.name}</h3></CardTitle>
                           <CardSubtitle className='text-light'>{eventInList.time}</CardSubtitle>
                           <CardText className='text-light'>Host : {eventInList.host.username}</CardText>
-                          <CardText className='text-light'>{eventInList.location}</CardText>
-                          <CardText className='text-light'>{eventInList.description}</CardText>
+                          <CardText className='text-light'>Location:{eventInList.location}<br/>What to expect:{eventInList.description}</CardText>
                           <CardText className="text-light">Capacity: {eventInList.guests.length}/{eventInList.max_number}</CardText>
                           <Row className="align-items-center">
                             <Col md="8">
@@ -125,7 +120,6 @@ class EventFeed extends React.Component {
                         </CardBody>
                       </Col>
                     </Row>
-                  </Card>
                 </Container>)
             })
 
@@ -135,9 +129,6 @@ class EventFeed extends React.Component {
       </div>
     )
   }
-
 }
-
-//create an event
 
 export default EventFeed;
