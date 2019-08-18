@@ -33,8 +33,8 @@ class NavBar extends React.Component {
                     <Nav className="ml-auto text-light" navbar>
                         <ul className="navbar-nav mr-auto">
                             <li><Link to={'/'} className="nav-link text-light"> Home </Link></li>
-                            <li><Link to={'/about'} className="nav-link text-light">About</Link></li>
-                            <li><Link to={'/contact'} className="nav-link text-light">Contact</Link></li>
+                            {/* <li><Link to={'/about'} className="nav-link text-light">About</Link></li> */}
+                            {/* <li><Link to={'/contact'} className="nav-link text-light">Contact</Link></li> */}
                             {this.props.isLoggedIn === 'loggedIn' ?
                                 <li><Link to={'/events'} className="nav-link text-light">Events</Link></li>
                                 : null

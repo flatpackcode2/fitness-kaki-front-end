@@ -8,7 +8,6 @@ import About_Logo from "../images/about.png";
 import Chat_Logo from "../images/Chat.png";
 import Company_Logo from "../images/company.png";
 import Developer_Logo from "../images/Developer.png";
-import axios from 'axios';
 
 class About extends Component {
     constructor(props) {

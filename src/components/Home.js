@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { UncontrolledCarousel, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import React from 'react';
+import {Card, Row, Col, UncontrolledCarousel } from 'reactstrap';
 import Community from "../images/community.jpg"
 import Healthy from "../images/Healthy.jpg"
 import Fitness from "../images/Fitness.jpg"
@@ -30,8 +30,8 @@ const Home = (props) => {
 
 
     return (
-        <>
-            <UncontrolledCarousel items={items} />
+        <>  
+        <UncontrolledCarousel items={items}/>
             <Row>
                 <Col sm="12">
                     <Card body>

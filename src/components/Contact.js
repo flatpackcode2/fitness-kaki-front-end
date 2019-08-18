@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Row, Col } from "reactstrap"
 import "./Contact.css";
 import FB from "../images/facebook.png"
 import Insta from "../images/instagram.png"
@@ -7,28 +6,27 @@ import Linkin from "../images/linkin.png"
 import Twitter from "../images/twitter.png"
 import Whatssap from "../images/whatssap.png"
 import MapContainer from "./MapContainer"
-import axios from 'axios';
 
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
+// const formValid = ({ formErrors, ...rest }) => {
+//     let valid = true;
 
-    // validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-        val.length > 0 && (valid = false);
-    });
+//     // validate form errors being empty
+//     Object.values(formErrors).forEach(val => {
+//         val.length > 0 && (valid = false);
+//     });
 
-    // validate the form was filled out
-    Object.values(rest).forEach(val => {
-        val === null && (valid = false);
-    });
+//     // validate the form was filled out
+//     Object.values(rest).forEach(val => {
+//         val === null && (valid = false);
+//     });
 
-    return valid;
-};
+//     return valid;
+// };
 
 class Registration extends Component {
     constructor(props) {
@@ -175,11 +173,11 @@ class Registration extends Component {
                             </div>
 
                             <div>
-                                <img src={FB} class="fa fa-facebook" />
-                                <img src={Insta} class="fa fa-insta" />
-                                <img src={Linkin} class="fa fa-linkin" />
-                                <img src={Twitter} class="fa fa-twitter" />
-                                <img src={Whatssap} class="fa fa-facebook" />
+                                <img alt="thisisanalt" src={FB} className="fa fa-facebook" />
+                                <img alt="thisisanalt" src={Insta} className="fa fa-insta" />
+                                <img alt="thisisanalt" src={Linkin} className="fa fa-linkin" />
+                                <img alt="thisisanalt" src={Twitter} className="fa fa-twitter" />
+                                <img alt="thisisanalt" src={Whatssap} className="fa fa-facebook" />
                             </div>
 
                             <div className="createAccount">

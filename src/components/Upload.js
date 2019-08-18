@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { file } from "@babel/types";
 import { Link } from 'react-router-dom'
 import './Upload.css'
 
@@ -108,12 +107,12 @@ class Upload extends Component {
         return (
             < div className="wrapper" >
                 <form  >
-                    <h1 class="word">Please insert an URL of picture and wait for the result</h1>
+                    <h1 className="word">Please insert an URL of picture and wait for the result</h1>
                     <div className="form-URL" >
                         <input onChange={e => this.predictImage(e)} name="image" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="" placeholder="Select URL" />
                     </div>
                     <br></br>
-                    <h1 class="word">Or insert a food picture that you have saved</h1>
+                    <h1 className="word">Or insert a food picture that you have saved</h1>
                     <br></br>
                     <input className="add-picture"
                         type="file"
