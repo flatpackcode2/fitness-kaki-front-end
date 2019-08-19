@@ -25,25 +25,6 @@ class Profile extends Component {
         this.openFile = this.openFile.bind(this);
     }
 
-    // componentDidMount = async () => {
-    //     // Retrieve JWT from localStorage
-    // //     let JWT = await localStorage.getItem('userToken');
-    // //     // headers need Authorization: `Bearer ${JWT}`
-    // //     let config = {
-    // //         headers: {
-    // //             Authentication: `Bearer ${JWT}`
-    // //         }
-    // //     }
-    // //     // Axios call to endpoint
-    // //     axios.get('your end point', config)
-    // //         .then(results => {
-    // //             console.log(results)
-    // //         })
-
-    // //     // .then() you can set state with the user information
-
-    // // }
-
     handleSubmit = e => {
         e.preventDefault()
         let JWT = localStorage.getItem('userToken');
@@ -53,12 +34,8 @@ class Profile extends Component {
             last_name: this.state.last_name,
             email: this.state.email
         }
-        console.log(`username is ${data['username']}`)
-        console.log(`first name is ${data['first_name']}`)
-        console.log(`last name is ${data['last_name']}`)
-        console.log(`email is ${data['email']}`)
 
-        axios.post('http://final-project-healthy.herokuapp.com/api/v1/users/update',
+        axios.post('https://final-project-healthy.herokuapp.com/api/v1/users/update',
             data,
             {
                 headers: {
