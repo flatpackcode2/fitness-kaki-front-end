@@ -89,7 +89,7 @@ class Home extends Component {
           onExited={this.onExited}
         >
         <img src={item.src} alt={item.altText} style={{maxWidth:'100%', transform:'translateY(-30%)'}}/>
-          <CarouselCaption className="text-light" captionHeader={item.caption} />
+          <CarouselCaption className="text-light justify-content-center" captionHeader={item.caption} />
         </CarouselItem>
       );
     });
