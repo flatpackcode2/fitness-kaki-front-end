@@ -116,6 +116,7 @@ class Home extends Component {
           <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
       </div>
+      <p>This platform was made by Colin Peter, Dominic Leong, Farshid Farnia and Joash Tee</p>
     );
   }
 }
