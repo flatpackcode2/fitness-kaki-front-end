@@ -132,7 +132,7 @@ class EventCreate extends React.Component {
 
                                 <Card style={{width:"300px", height:"300px"}} className="d-flex justify-content-center align-items-center">
                                     {/* Set loading icon when uploading picture. nested ternary operator. */}
-                                    {!isLoading?(!imageFile?(<h4 className="text-center">{message ? message : "Live Preview"}</h4>):(<CardImg src={previewImage} height="300px" width="300px"/>)):<Loader/>}
+                                    {!isLoading?(!imageFile?(<h4 className="text-center">{message ? message : "Click to upload"}</h4>):(<CardImg src={previewImage} height="300px" width="300px"/>)):<Loader/>}
                                 </Card>
                             </div>
                             <input id="upload" style={{display:"none"}} type="file" accept="image/*" multiple={false} name="image-file" ref={this.imageUpload} id="imageFile" onChange={this.handleFile}></input>
