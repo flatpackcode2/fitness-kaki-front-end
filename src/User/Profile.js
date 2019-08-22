@@ -54,20 +54,6 @@ class Profile extends Component {
     }
 
 
-
-    // handleSubmit = e => {
-    //     e.preventDefault()
-    //     const RegistrationApp = {
-    //         username: this.state.username,
-    //         first_name: this.state.first_name,
-    //         last_name: this.state.last_name,
-    //         email: this.state.email
-    //     }
-
-
-    //     this.props.LogMeUp(RegistrationApp);
-    // };
-
     openFile() {
         this.fileInputRef.current.click()
     }
@@ -80,7 +66,6 @@ class Profile extends Component {
 
 
     render() {
-        console.log(this.state)
         return (
             <div className="wrapper">
                 <div className="form-wrapper">

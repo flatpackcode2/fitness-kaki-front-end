@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardDeck
+    CardTitle, CardFooter, Row, Col
 } from 'reactstrap';
 import './About.css'
-import About_Logo from "../images/about.png";
-import Chat_Logo from "../images/Chat.png";
-import Company_Logo from "../images/company.png";
+import Dominic from "../images/Dominic.jpg";
+import Account from "../images/account.png";
+import colin from "../images/colin.jpg";
+
 import Developer_Logo from "../images/Developer.png";
+import { Container } from "semantic-ui-react";
 
 class About extends Component {
     constructor(props) {
@@ -19,37 +21,66 @@ class About extends Component {
 
     render() {
         return (
-
-            <CardDeck>
-                <Card body className="text-center">
-                    <CardImg top width="50%" src={Company_Logo} alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle>Company</CardTitle>
-                        <CardText>Information for our company</CardText>
-                    </CardBody>
+            <>
+            <style>{
+                `.card-title{
+                    font-size: 20px;
+                }`
+            }
+            </style>
+            <h2>About Us</h2>
+            <Row className="d-flex justify-content-center">
+                <h5 className="text-center">This platform is forked from the FitnessKaki repo <br/> - a group project done as part the <a href="https://www.nextacademy.com/quantum-degrees/coding/full-time/full-stack-web-development" target="_blank">NEXT Academy Full Stack Web Development Bootcamp</a><br/> It is currently maintained by:</h5>
+                </Row>
+                <Row className="d-flex justify-content-center">
+                <Col md={10} className="d-flex justify-content-center">
+                <Card className="text-center w-25 m-2 p-2">
+                        <CardImg top width="" src={colin} alt="Card image cap" className="rounded-circle" />
+                        <CardBody>
+                            <CardTitle><strong>Colin Peter</strong></CardTitle>
+                            <CardText>Back-end, front-end and ML enthusiast</CardText>
+                            <CardFooter><a href="https://github.com/flatpackcode2" target="_blank"><i className="fab fa-github-square fa-3x"></i></a>
+                            &nbsp;
+                            <a href="https://www.linkedin.com/in/colinnoahpeter/" target="_blank"><i className="fab fa-linkedin fa-3x"></i></a>&nbsp;
+                            <a href="mailto:colinnoahpeter@gmail.com?Subject=Hello%20there!" target="_top"><i className="fas fa-envelope-square fa-3x"></i></a>
+                            </CardFooter>
+                        </CardBody>
                 </Card>
-                <Card body className="text-center">
-                    <CardImg top width="50%" src={Developer_Logo} alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle>Developer</CardTitle>
-                        <CardText>Information about the developers that are working on this website</CardText>
-                    </CardBody>
-                </Card>
-                <Card body className="text-center">
-                    <CardImg top width="50%" src={Chat_Logo} alt="Card image cap" />
-                    <CardBody>
-                        <CardTitle>Chatroom</CardTitle>
-                        <CardText>Chat with our support team</CardText>
-                    </CardBody>
-                </Card>
-                <Card body className="text-center">
-                    <CardImg top width="50%" src={About_Logo} alt="Card image cap" class="fa fa-about" />
-                    <CardBody>
-                        <CardTitle>Other Information</CardTitle>
-                        <CardText>Look this up for any other FAQ</CardText>
-                    </CardBody>
-                </Card>
-            </CardDeck>
+                </Col>
+                </Row>
+            
+            {/* <Row className="d-flex justify-content-center">
+            <h5>I would like to thank my following teammates for building the initial version with me:</h5>
+            </Row>
+            <Row className="d-flex justify-content-center">
+                <Col md={10} className="d-flex justify-content-center">
+                        <Card className="text-center w-25 m-2">
+                            <CardImg top width="50%" src={Dominic} alt="Card image cap" className="rounded-circle p-2" />
+                            <CardBody>
+                                <CardTitle><strong>Dominic Leong</strong></CardTitle>
+                                <CardText>Front-end</CardText>
+                                <CardFooter><i class="fab fa-github-square fa-3x"></i>&nbsp;<i class="fab fa-linkedin fa-3x"></i></CardFooter>
+                            </CardBody>
+                        </Card>
+                        <Card className="text-center w-25 m-2">
+                            <CardImg top width="50%" src={Account} alt="Card image cap" className="rounded-circle p-2" />
+                            <CardBody>
+                                <CardTitle><strong>Farshid Farnia</strong></CardTitle>
+                                <CardText>Front-end</CardText>
+                                <CardFooter><i class="fab fa-github-square fa-3x"></i>&nbsp;<i class="fab fa-linkedin fa-3x"></i></CardFooter>
+                            </CardBody>
+                        </Card>
+                        <Card className="text-center w-25 m-2">
+                            <CardImg top width="50%" src={Account} alt="Card image cap" className="rounded-circle p-2" />
+                            <CardBody>
+                                <CardTitle><strong>Joash Tee</strong></CardTitle>
+                                <CardText>Front-end</CardText>
+                                <CardFooter><i class="fab fa-github-square fa-3x"></i>&nbsp;<i class="fab fa-linkedin fa-3x"></i></CardFooter>
+                            </CardBody>
+                        </Card>
+                </Col>
+            </Row> */}
+            </>
         );
     }
 }

@@ -15,7 +15,8 @@ import {
 import axios from 'axios';
 import PlacesWithStandaloneSearchBox from "../components/PlacesWithStandaloneSearchBox";
 import { Link } from "react-router-dom";
-import Loader from "../images/loader.gif"
+import Loader from "../images/loader.gif";
+import morningRun from "../images/morning_run.jpg"
 
 class EventCreate extends React.Component {
     constructor(props) {
@@ -99,22 +100,22 @@ class EventCreate extends React.Component {
     render() {
         const { event_name, description, location, max_number, time, isLoading, previewImage, imageFile, message } = this.state
         return (
-            <div>
-                <h3 className="text-center">Create Your Event Here:</h3>
+            <div style={{backgroundImage: `url(${morningRun})`, backgroundSize:'cover', height:'100vh'}}>
+                <h3 className="text-center text-light">Create Your Event Here:</h3>
                 <Row className="d-flex justify-content-center">
-                    <Col md="4" sm="6" className="d-flex justify-content-end">
-                        <Form className=" w-75">
-                            <FormGroup>
-                                <Label for="eventName">Event Name:</Label>
+                    <Col lg="4" md="5" sm="12" className="d-flex justify-content-center">
+                        <Form className="d-flex justify-content-center">
+                            <FormGroup >
+                                <Label for="eventName" className="text-light">Event Name:</Label>
                                 <Input id="eventName" type="text" value={event_name} onChange={this.handleChange} placeholder="Give me a name"></Input>
-                                <Label for="description">Description:</Label>
+                                <Label for="description" className="text-light">Description:</Label>
                                 <Input id="description" type="text" value={description} onChange={this.handleChange} placeholder="Share what I'm about"></Input>
-                                <Label for="location">Location:</Label>
+                                <Label for="location" className="text-light">Location:</Label>
                                 <PlacesWithStandaloneSearchBox liftMyLocationUp={this.liftMyLocationUp} />
                                 {/* <Input id="location" type="text" value={location} onChange={this.handleChange} placeholder="Tell folks where to find me"></Input> */}
-                                <Label for="time">Time:</Label>
+                                <Label for="time" className="text-light">Time:</Label>
                                 <Input id="time" type="datetime-local" value={time} onChange={this.handleChange}></Input>
-                                <Label for="maxNumber">Max Number:</Label>
+                                <Label for="maxNumber" className="text-light">Max Number:</Label>
                                 <Input id="maxNumber" type="number" min="0" value={max_number} onChange={this.handleChange} placeholder="It's always better with company"></Input>
                                 <div>&nbsp;</div>
                             </FormGroup>
@@ -122,10 +123,11 @@ class EventCreate extends React.Component {
                     </Col>
 
 
-                    <Col md="4" sm="6">
+                    <Col lg="4" md="5" sm="12" className="d-flex justify-content-center">
                         <Row>
+                        <Form>
                         <FormGroup>
-                        <Label className="d-block">Upload your event image here:</Label>
+                        <Label className="d-block text-light">Upload your event image here:</Label>
                             <div id="image-preview" onClick={this.handleClick}>
 
                                 <Card style={{width:"300px", height:"300px"}} className="d-flex justify-content-center align-items-center">
@@ -135,6 +137,7 @@ class EventCreate extends React.Component {
                             </div>
                             <input id="upload" style={{display:"none"}} type="file" accept="image/*" multiple={false} name="image-file" ref={this.imageUpload} id="imageFile" onChange={this.handleFile}></input>
                         </FormGroup>
+
                             <FormGroup>
                             <div id="image-submit-form">
                                     <Row >
@@ -145,12 +148,13 @@ class EventCreate extends React.Component {
                                     </Row>
                             </div>
                             </FormGroup>
+                        </Form>
                         </Row>
                     </Col>
                 </Row>
                 <Row>
                     <Col className="d-flex justify-content-center">
-                        <Button type="submit" outline color="primary" onClick={this.handleSubmit}><Link to={'/events'}>Create Event</Link></Button>
+                        <Button color="primary" className="text-light" onClick={this.handleSubmit}>Create Event</Button>
                     </Col>
                 </Row>
             </div>
