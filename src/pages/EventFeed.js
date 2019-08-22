@@ -13,6 +13,7 @@ import {
 import axios from 'axios';
 import Loader from '../images/loader.gif';
 import { Link } from "react-router-dom";
+import nightWorkout from "../images/nightWorkout.jpg";
 
 class EventFeed extends React.Component {
   constructor(props) {
@@ -74,10 +75,10 @@ class EventFeed extends React.Component {
   render() {
     const { eventsList, isLoading } = this.state;
     return (
-      <div>
+      <div style={{backgroundImage: `url(${nightWorkout})`, backgroundSize:'cover', backgroundAttachment:'fixed', height:'100wh'}}>
         <div>
-          <h1>Events Near You</h1>
-          <h4 className="text-center">Don't see a fitness meet you like? How about <Link to={'/events/create'}>creating your own</Link>?</h4>
+          <h1 className="text-center text-light shadow">Events Near You</h1>
+          <h4 className="text-center text-light shadow">Don't see a fitness meet you like? How about <Link to={'/events/create'}>creating your own</Link>?</h4>
           {isLoading ?
             <Container>
               <Row className="d-flex align-items-center justify-content-center">
@@ -92,8 +93,8 @@ class EventFeed extends React.Component {
                 console.log('The user is here!')
               }
               return (
-                <Container key={eventInList.id} className="my-2">
-                    <Row md="10" className="d-flex align-items-center rounded bg-info">
+                <Container key={eventInList.id} className="my-2 bg-none">
+                    <Row md="10" className="d-flex align-items-center rounded bg-info" style={{opacity:'0.9'}}>
                       <Col md="4" className=" d-flex justify-content-center align-item-center rounded">
                         <img width="200px" height="200px" className="border border-white m-3 rounded justify-content-center" src={eventInList.image} alt="event image" />
                       </Col>

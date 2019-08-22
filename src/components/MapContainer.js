@@ -47,6 +47,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAkCcGqcFUxLUKKyKi7q4lbndkqkIzYchM'
+  apiKey: `${process.env.REACT_APP_GOOGLE_MAPS}`
 })(MapContainer);
-// https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
