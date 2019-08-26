@@ -28,9 +28,10 @@ class About extends Component {
                 }`
             }
             </style>
-            <h2>About Us</h2>
+            <h2 className="text-center">About Us</h2>
             <Row className="d-flex justify-content-center">
-                <h5 className="text-center">This platform is forked from the FitnessKaki repo <br/> - a group project done as part the <a href="https://www.nextacademy.com/quantum-degrees/coding/full-time/full-stack-web-development" target="_blank">NEXT Academy Full Stack Web Development Bootcamp</a><br/> It is currently maintained by:</h5>
+                <p className="text-center">This platform is forked from the FitnessKaki repo <br/> - a group project done as part the <a href="https://www.nextacademy.com/quantum-degrees/coding/full-time/full-stack-web-development" target="_blank">NEXT Academy Full Stack Web Development Bootcamp</a>. Check out the <a href="https://github.com/flatpackcode2/fitness-kaki-front-end" target="_blank">front-end</a> and <a href="https://github.com/flatpackcode2/fitness-kaki-backend" target="_blank">back-end</a>.<br/>
+                It is currently maintained by:</p>
                 </Row>
                 <Row className="d-flex justify-content-center">
                 <Col md={10} className="d-flex justify-content-center">
@@ -49,8 +50,8 @@ class About extends Component {
                 </Col>
                 </Row>
             
-            {/* <Row className="d-flex justify-content-center">
-            <h5>I would like to thank my following teammates for building the initial version with me:</h5>
+            <Row className="d-flex justify-content-center">
+            <p>I would like to thank my following teammates for building the initial version with me:</p>
             </Row>
             <Row className="d-flex justify-content-center">
                 <Col md={10} className="d-flex justify-content-center">
@@ -59,7 +60,7 @@ class About extends Component {
                             <CardBody>
                                 <CardTitle><strong>Dominic Leong</strong></CardTitle>
                                 <CardText>Front-end</CardText>
-                                <CardFooter><i class="fab fa-github-square fa-3x"></i>&nbsp;<i class="fab fa-linkedin fa-3x"></i></CardFooter>
+                                <CardFooter><a href="https://github.com/rsl13a" target="_blank"><i className="fab fa-github-square fa-3x"></i></a></CardFooter>
                             </CardBody>
                         </Card>
                         <Card className="text-center w-25 m-2">
@@ -67,7 +68,7 @@ class About extends Component {
                             <CardBody>
                                 <CardTitle><strong>Farshid Farnia</strong></CardTitle>
                                 <CardText>Front-end</CardText>
-                                <CardFooter><i class="fab fa-github-square fa-3x"></i>&nbsp;<i class="fab fa-linkedin fa-3x"></i></CardFooter>
+                                <CardFooter><a href="https://www.linkedin.com/in/farshid-farnia" target="_blank"><i className="fab fa-linkedin fa-3x"></i></a>&nbsp;<a href="https://github.com/farshidfarnia" target="_blank"><i className="fab fa-github-square fa-3x"></i></a></CardFooter>
                             </CardBody>
                         </Card>
                         <Card className="text-center w-25 m-2">
@@ -75,11 +76,11 @@ class About extends Component {
                             <CardBody>
                                 <CardTitle><strong>Joash Tee</strong></CardTitle>
                                 <CardText>Front-end</CardText>
-                                <CardFooter><i class="fab fa-github-square fa-3x"></i>&nbsp;<i class="fab fa-linkedin fa-3x"></i></CardFooter>
+                                <CardFooter><a href="https://github.com/Joash-Tee" target="_blank"><i className="fab fa-github-square fa-3x"></i></a></CardFooter>
                             </CardBody>
                         </Card>
                 </Col>
-            </Row> */}
+            </Row>
             </>
         );
     }
