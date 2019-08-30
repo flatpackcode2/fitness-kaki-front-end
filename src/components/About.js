@@ -8,9 +8,6 @@ import Dominic from "../images/Dominic.jpg";
 import Account from "../images/account.png";
 import colin from "../images/colin.jpg";
 
-import Developer_Logo from "../images/Developer.png";
-import { Container } from "semantic-ui-react";
-
 class About extends Component {
     constructor(props) {
         super(props);

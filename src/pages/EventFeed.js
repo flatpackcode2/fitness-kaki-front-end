@@ -28,14 +28,17 @@ class EventFeed extends React.Component {
 
   //retrieve all events via axios
   componentDidMount() {
-    axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
-      .then(response => {
-        let tempEventList = response.data;
-        this.setState({ eventsList: tempEventList, isLoading: false })
-      })
-      .catch(error => {
-        console.log('ERROR: ', error);
-      })
+    setInterval(()=>{
+      console.log('interval')
+      axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
+        .then(response => {
+          let tempEventList = response.data;
+          this.setState({ eventsList: tempEventList, isLoading: false })
+        })
+        .catch(error => {
+          console.log('ERROR: ', error);
+        })
+    }, 1000)
   }
 
   refreshFeed = () =>{
@@ -53,6 +56,7 @@ class EventFeed extends React.Component {
     this.refreshFeed();
   }
 
+  //this function allows the user to join or leave an event
   handleSubmit = e =>{
     //make an api call to guestlist and add or delete current user to guest list
     let event_id = e.target.id
@@ -88,10 +92,6 @@ class EventFeed extends React.Component {
             :
 
             eventsList.map((eventInList) => {
-              let guestlist=[]
-              if (eventInList.guests.includes(this.props.current_user.id)){
-                console.log('The user is here!')
-              }
               return (
                 <Container key={eventInList.id} className="my-2 bg-none">
                     <Row md="10" className="d-flex align-items-center rounded bg-info" style={{opacity:'0.9'}}>

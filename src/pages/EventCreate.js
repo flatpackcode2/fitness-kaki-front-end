@@ -63,7 +63,7 @@ class EventCreate extends React.Component {
 
         console.log('handleSubmit called')
         this.registerEvent(formData);
-        setTimeout(() => this.props.history.push('/events'), 2000);
+        setTimeout(() => this.props.history.push('/events'), 1000);
     }
 
     handleFile = (e) =>{

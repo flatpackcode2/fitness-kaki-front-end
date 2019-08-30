@@ -1,7 +1,0 @@
-@import "node_modules/bootstrap/scss/bootstrap";
-
-// With variable
-.alpha { color: $purple; }
-
-// From the Sass map with our `color()` function
-.beta { color: color("purple"); }
