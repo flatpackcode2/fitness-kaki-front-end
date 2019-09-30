@@ -1,27 +1,5 @@
 import React, { Component } from "react";
 import "./Login.css";
-import axios from 'axios';
-
-
-const emailRegex = RegExp(
-    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-);
-
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-
-    // validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-        val.length > 0 && (valid = false);
-    });
-
-    // validate the form was filled out
-    Object.values(rest).forEach(val => {
-        val === null && (valid = false);
-    });
-
-    return valid;
-};
 
 class Login extends Component {
     constructor(props) {
@@ -46,23 +24,22 @@ class Login extends Component {
         }
 
         this.props.LogMeUp(RegistrationApp);
-    };
+    }
 
     handleChange = e => {
         e.preventDefault();
         const { name, value } = e.target;
         let formErrors = { ...this.state.formErrors };
+        this.setState({ formErrors, [name]: value });
+    }
 
-        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-    };
     render() {
         const { formErrors } = this.state;
-        console.log(formErrors)
         return (
             <div className="wrapper">
                 <div className="form-wrapper">
                     <h1>Login</h1>
-                    <form onSubmit={this.handleSubmit} noValidate>
+                    <form onSubmit={this.handleSubmit} >
                         <div className="username">
                             <label htmlFor="username">Username</label>
                             <input
@@ -70,7 +47,6 @@ class Login extends Component {
                                 placeholder="username"
                                 type="text"
                                 name="username"
-                                noValidate
                                 onChange={this.handleChange}
                             />
                             {formErrors.username.length > 0 && (
@@ -84,7 +60,6 @@ class Login extends Component {
                                 placeholder="Password"
                                 type="password"
                                 name="password"
-                                noValidate
                                 onChange={this.handleChange}
                             />
                             {formErrors.password.length > 0 && (

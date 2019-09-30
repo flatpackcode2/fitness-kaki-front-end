@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button } from "reactstrap"
 import './Profile.css'
-import Dominic from "../images/Dominic.jpg"
+import account from "../images/account.png"
 import axios from 'axios'
+
 
 class Profile extends Component {
     constructor(props) {
@@ -70,13 +71,9 @@ class Profile extends Component {
             <div className="wrapper">
                 <div className="form-wrapper">
                     <h1>{this.props.current_user.first_name}'s Profile</h1>
-                    {/* <div className="Card"> */}
                     <div>
-                        {/* <img src={Acc} id="account" /> */}
-                        <img src={Dominic} style={{ width: '270px', display: 'block', margin: 'auto' }} alt="react is a pain"/>
+                        <img src={account} style={{ width: '270px', display: 'block', margin: 'auto' }} alt="user image"/>
                     </div>
-
-                    {/* </div> */}
                     <br></br>
                     <div className="form-group">
                         <input type='text' name="username" className="form-control" onChange={this.handleInput} value={this.state.username} placeholder={this.props.current_user.username} />

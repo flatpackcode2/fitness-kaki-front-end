@@ -14,6 +14,7 @@ import EventFeed from "./pages/EventFeed";
 import EventCreate from "./pages/EventCreate";
 import axios from 'axios'
 import './App.css';
+import Loader from "./images/loader.gif";
 
 class App extends React.Component {
 
@@ -33,6 +34,9 @@ class App extends React.Component {
 
   componentDidMount = () => {
     let loginStatus = localStorage.getItem('loggedInStatus')
+    if(loginStatus==null){
+      loginStatus='loggedOut';
+    }
     let userData = localStorage.getItem('userData')
     this.setState({
       loggedInStatus: loginStatus,
@@ -72,12 +76,10 @@ class App extends React.Component {
       }
     }).then(result => {
       this.props.history.push('/profile')
-      console.log(result)
     })
       .catch(error => {
         console.log(`Sign-up failed: ${error}`)
         console.log(error)
-        // console.log(error.response.data.message)
       })
   }
 
@@ -91,6 +93,7 @@ class App extends React.Component {
   }
 
   LoginAccount = () => {
+    console.log(`loggedinStatus in LoginAccount: ${this.state.loggedInStatus}`);
     axios({
       method: 'POST',
       url: 'https://final-project-healthy.herokuapp.com/api/v1/sessions/login',
@@ -98,7 +101,8 @@ class App extends React.Component {
         username: `${this.state.username}`,
         password: `${this.state.password}`
       }
-    }).then(result => {
+    })
+    .then(result => {
       let JWT = result.data.auth_token;
       localStorage.setItem('userToken', JWT)
       localStorage.setItem('userData', JSON.stringify(result.data.user))

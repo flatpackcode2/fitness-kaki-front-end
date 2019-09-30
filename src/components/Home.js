@@ -75,11 +75,7 @@ class Home extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    console.log(items)
     const slides = items.map((item) => {
-        console.log(item)
-        console.log(item.id)
-        console.log(item.src)
       return (
         <CarouselItem
           className="custom-tag"
@@ -89,7 +85,7 @@ class Home extends Component {
           onExited={this.onExited}
         >
         <img src={item.src} alt={item.altText} style={{maxWidth:'100%', transform:'translateY(-30%)'}}/>
-          <CarouselCaption className="text-light" style={{textAlign:'center'}} captionHeader={item.caption} />
+          {/* <CarouselCaption className="text-light" style={{textAlign:'center'}} captionHeader={item.caption} /> */}
         </CarouselItem>
       );
     });

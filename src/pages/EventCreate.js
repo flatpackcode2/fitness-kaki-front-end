@@ -2,11 +2,9 @@ import React from 'react';
 import {
     Card,
     CardImg,
-    CardText,
     Button,
     Col,
     Form,
-    FormText,
     FormGroup,
     Input,
     Label,
@@ -14,7 +12,6 @@ import {
 } from "reactstrap"
 import axios from 'axios';
 import PlacesWithStandaloneSearchBox from "../components/PlacesWithStandaloneSearchBox";
-import { Link } from "react-router-dom";
 import Loader from "../images/loader.gif";
 import morningRun from "../images/morning_run.jpg"
 
@@ -36,15 +33,7 @@ class EventCreate extends React.Component {
     }
 
     handleChange = e => {
-        this.setState({ [e.target.id]: e.target.value }, () => {
-            //for debugging purposes, this ensures that the state is updated with the field values
-            for (const key in this.state) {
-                if (this.state.hasOwnProperty(key)) {
-                    console.log(key + " -> " + this.state[key] + ` of data type ${typeof (this.state[key])}`);
-                }
-            }
-        })
-        console.clear()
+        this.setState({ [e.target.id]: e.target.value })
     }
 
     liftMyLocationUp = locationFromGoogle => {
@@ -61,13 +50,11 @@ class EventCreate extends React.Component {
         formData.append("time", this.state.time);
         formData.append("location", this.state.location);
 
-        console.log('handleSubmit called')
         this.registerEvent(formData);
         setTimeout(() => this.props.history.push('/events'), 1000);
     }
 
     handleFile = (e) =>{
-        console.log(e.target.files[0])
         this.setState({
             imageFile:e.target.files[0],
             previewImage:URL.createObjectURL(e.target.files[0]),
@@ -87,6 +74,7 @@ class EventCreate extends React.Component {
         ).then(response => {
             if (response.data.success){
                 console.log(response.data.success)
+                // this.props.history.push('/events')
             }
         }).catch(error => {
             console.log("ERROR in request: ", error);
@@ -112,7 +100,6 @@ class EventCreate extends React.Component {
                                 <Input id="description" type="text" value={description} onChange={this.handleChange} placeholder="Share what I'm about"></Input>
                                 <Label for="location" className="text-light">Location:</Label>
                                 <PlacesWithStandaloneSearchBox liftMyLocationUp={this.liftMyLocationUp} />
-                                {/* <Input id="location" type="text" value={location} onChange={this.handleChange} placeholder="Tell folks where to find me"></Input> */}
                                 <Label for="time" className="text-light">Time:</Label>
                                 <Input id="time" type="datetime-local" value={time} onChange={this.handleChange}></Input>
                                 <Label for="maxNumber" className="text-light">Max Number:</Label>

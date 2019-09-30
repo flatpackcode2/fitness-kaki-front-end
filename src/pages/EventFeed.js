@@ -29,7 +29,6 @@ class EventFeed extends React.Component {
   //retrieve all events via axios
   componentDidMount() {
     setInterval(()=>{
-      console.log('interval')
       axios.get('https://final-project-healthy.herokuapp.com/api/v1/events/')
         .then(response => {
           let tempEventList = response.data;
@@ -69,7 +68,6 @@ class EventFeed extends React.Component {
             }
       }
     ).then(response => {
-      console.log(response);
       this.refreshFeed();
   }).catch(error => {
       console.log("ERROR in request: ", error)
