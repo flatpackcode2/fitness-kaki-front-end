@@ -7,6 +7,7 @@ import './About.css'
 import Dominic from "../images/Dominic.jpg";
 import Account from "../images/account.png";
 import colin from "../images/colin.jpg";
+import farshid from '../images/farshid.jpeg';
 
 class About extends Component {
     constructor(props) {
@@ -61,7 +62,7 @@ class About extends Component {
                             </CardBody>
                         </Card>
                         <Card className="text-center w-25 m-2">
-                            <CardImg top width="50%" src={Account} alt="Card image cap" className="rounded-circle p-2" />
+                            <CardImg top width="50%" src={farshid} alt="Card image cap" className="rounded-circle p-2" />
                             <CardBody>
                                 <CardTitle><strong>Farshid Farnia</strong></CardTitle>
                                 <CardText>Front-end</CardText>
